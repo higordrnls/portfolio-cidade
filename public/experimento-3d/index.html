@@ -86,12 +86,20 @@ header .bar button[aria-pressed=true]{background:#a36d38;border-color:#dca35d;co
 @media(max-width:1050px){header{grid-template-columns:1fr auto;height:auto;min-height:78px}header .bar{grid-column:1/-1;justify-content:flex-start}#hero{top:120px;width:280px;padding:24px 18px}#hero h1{font-size:30px}.city-stats,.city-activity{margin-top:16px}}
 @media(max-width:720px){header{padding:10px 12px;display:flex;gap:8px;justify-content:space-between}header>div:first-child{padding-left:44px}header>div:first-child:before{width:36px;height:36px;font-size:14px}header b{font-size:11px}header small{font-size:9px}.bar{width:100%;overflow-x:auto;flex-wrap:nowrap!important}.bar button{white-space:nowrap;padding:7px 10px!important}#hero{display:none}.lb{max-width:110px;padding:5px!important}.lb span{font-size:10px!important}.lb small{font-size:9px!important}#pn{top:auto}}
 @media(prefers-reduced-motion:reduce){.lb{transition:none}}
+</style><style>
+.city-stats .stats-row{grid-template-columns:repeat(4,minmax(0,1fr))}
+.city-stats .stats-row div{padding:0 5px;min-width:0}
+.city-stats strong{font-size:18px}
+.city-stats small{font-size:9px;line-height:1.25;display:block}
+.city-activity p{display:flex;justify-content:space-between;gap:9px;align-items:baseline}
+.city-activity p small{font-size:9px;color:#9daec7;text-align:right;flex-shrink:0}
+@media(max-width:1050px){.city-stats .stats-row{grid-template-columns:repeat(2,1fr);gap:15px}.city-stats .stats-row div:nth-child(2){border:0}}
 </style></head>
 <body data-m="n">
 <canvas id="c" role="img" aria-label="Cidade 3D interativa com os nove projetos"></canvas>
 <header><div><b>HIGOR DORNELAS</b><small>Portfólio da cidade</small></div>
-<div class="bar"><button id="openfolio">Sobre mim ↗</button><button id="bd">☀ Dia</button><button id="bn">☾ Noite</button><button id="zo" aria-label="Diminuir zoom">−</button><button id="zi" aria-label="Aumentar zoom">+</button><button id="hm">Visão geral</button><button id="nm" aria-pressed="true">Nomes</button><a class="render-link" href="../Cidade%20Futurista%20Iluminada%20%C3%A0%20Noite.png" target="_blank" rel="noopener noreferrer">Ver render de referência ↗</a></div></header>
-<section id="hero"><h1>Explore meus <em>projetos.</em></h1><p>Cada edifício representa algo que criei, desenvolvi ou estou construindo. Explore a cidade e conheça os projetos.</p><button id="go">Explorar a Agadê</button><div class="city-stats"><h3>Resumo da cidade <span style="float:right;color:#65d9a0">● Atualizado</span></h3><div class="stats-row"><div><strong>09</strong><small>Projetos</small></div><div><strong>07</strong><small>Publicados</small></div><div><strong>02</strong><small>Em evolução</small></div></div></div><div class="city-activity"><h3>Em destaque</h3><p><span>Agadê</span> — Design autoral e óculos</p><p><span>Lumear</span> — Arquitetura em construção</p><p><span>Pastelaria</span> — Lote reservado</p></div></section>
+<div class="bar"><button id="openfolio">Sobre mim ↗</button><button id="bd">☀ Dia</button><button id="bn">☾ Noite</button><button id="zo" aria-label="Diminuir zoom">−</button><button id="zi" aria-label="Aumentar zoom">+</button><button id="hm">Visão geral</button><button id="nm" aria-pressed="true">Nomes</button></div></header>
+<section id="hero"><h1>Explore meus <em>projetos.</em></h1><p>Cada edifício representa algo que criei, desenvolvi ou estou construindo. Explore a cidade e conheça os projetos.</p><button id="go">Explorar a Agadê</button><div class="city-stats"><h3>Resumo da cidade <span style="float:right;color:#65d9a0">● Atualizado</span></h3><div class="stats-row"><div><strong>09</strong><small>Projetos</small></div><div><strong>07</strong><small>Desenvolvidos</small></div><div><strong>01</strong><small>Em construção</small></div><div><strong>01</strong><small>Planejado</small></div></div></div><div class="city-activity"><h3>Em destaque</h3><p><span>Agadê</span> — Marca de óculos <small>Em desenvolvimento</small></p><p><span>Lumear</span> — Arquitetura e construção <small>Em construção</small></p><p><span>Pastelaria PDV</span> — Projeto futuro <small>Planejado</small></p></div></section>
 <div id="lbs"></div>
 <aside id="pn" hidden aria-live="polite"><button id="x" aria-label="Fechar">×</button><p id="k"></p><h2 id="h"></h2><p id="d"></p><div id="ch"></div><div id="ln"></div><div class="nv"><button id="pv">← Anterior</button><button id="nx">Próximo →</button></div></aside>
 <div id="folio" hidden aria-label="Portfólio completo">
