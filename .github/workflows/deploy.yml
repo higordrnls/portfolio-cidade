@@ -1,7 +1,7 @@
 name: Build and deploy city
 on:
   push:
-    branches: [main]
+    branches: [main, feat/cidade-v2-render]
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,10 +22,15 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Type-check and build
         run: npm run build
+      - name: Verify required scene asset
+        if: github.ref == 'refs/heads/main'
+        run: test -s public/cidade-master.webp
       - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
         with:
           path: dist
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
