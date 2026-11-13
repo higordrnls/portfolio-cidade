@@ -35,3 +35,37 @@ main{overflow:hidden}
 .route-list small{color:#b7c7d1}footer{background:#081726;border-color:#ffffff22}
 .panel{background:#0b1d2e;color:#f4f7f8}.panel-body h3{color:#dda680}.panel-body p{color:#c6d0d7}
 @media(max-width:850px){.intro{position:relative;top:auto;left:auto;margin:0;width:100%;border-radius:0;padding:24px}.controls{position:relative;top:auto;right:auto;background:#081726;justify-content:center}.viewport{min-height:450px;height:58vh}.city-svg{min-width:850px}.stage{min-width:850px}.intro h1{font-size:30px}}
+
+/* Correções de leitura diurna, escala e limite de cena — 2026-11-13 */
+.app.day{--paper:#f3efe6;--ink:#24343a;--panel:#fffaf0;--muted:#4d6166;background:#f3efe6;color:#24343a}
+.app.day header{background:#fffaf1;color:#20343b;border-bottom-color:#c8c5bb}
+.app.day .brand span,.app.day .eyebrow{color:#a36342}
+.app.day .intro{background:#fffaf1ed;color:#1d343a;border-color:#fff;box-shadow:0 18px 60px #20342c27}
+.app.day .intro h1 em{color:#ad6d4c}
+.app.day .intro p{color:#536970}
+.app.day .controls button{background:#fffaf0ee;color:#20343b;border-color:#a5aaa1}
+.app.day .controls button.active{background:#ad6948;color:#fff;border-color:#ad6948}
+.app.day .viewport{background:#c9d9cf}
+.app.day .viewport:after{background:linear-gradient(90deg,#eff7e920,transparent 30%,transparent 90%,#f4f5e915)}
+.app.day .city-svg .sky-start{stop-color:#cce8eb}
+.app.day .city-svg .sky-end{stop-color:#f3e9cf}
+.app.day .city-svg .terrain{fill:#c5d6b5}
+.app.day .city-svg .park{fill:#b1c79a}
+.app.day .city-svg .roads{stroke:#84959a}
+.app.day .city-svg .road-mark{stroke:#fff3d6}
+.app.day .city-svg .context-city{filter:brightness(1.13) saturate(.78)}
+.app.day .city-svg .waterfront{filter:brightness(1.45) saturate(.7)}
+.app.day .city-svg .distant-land{opacity:.12}
+.app.day .city-svg .roof{fill:#c5b8a4}
+.app.day .city-svg .facade{fill:#eee8dc}
+.app.day .city-svg .side{fill:#a79b8d}
+.app.day .city-svg .window{fill:#476c77}
+.app.day .caption,.app.day .route,.app.day footer{background:#f3efe6;color:#33484b}
+.app.day .route-list button{background:#fffaf1;color:#253b40;border-color:#d6d3ca}
+.app.day .route-list small{color:#657579}
+.app.day .panel{background:#fffaf0;color:#25383e}
+.app.day .panel-body p{color:#536970}
+.stage{transform-origin:center center;min-width:0}
+.viewport{isolation:isolate}
+.city-svg{min-width:0;overflow:visible}
+@media(max-width:850px){.stage{min-width:850px}.city-svg{min-width:850px}}
