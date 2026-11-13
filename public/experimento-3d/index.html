@@ -163,11 +163,27 @@ body[data-m=d] .city-activity .activity-item>small{color:#c5cfe1!important}
 .city-activity .activity-item>small{display:block;text-align:right!important;max-width:none!important;margin-top:4px;font-size:10px!important}
 @media(min-width:1051px){header{grid-template-columns:321px minmax(0,1fr) auto!important}}
 @media(max-width:1050px){.city-stats .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:12px!important}.city-stats .stats-row div:nth-child(2){border-right:0!important}}
+</style><style>
+/* Cabeçalho em três zonas, seguindo a hierarquia da referência. */
+.site-header{position:fixed!important;top:0;left:0;right:0;height:82px!important;min-height:82px!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(260px,1fr) auto minmax(260px,1fr)!important;gap:20px!important;align-items:center!important;padding:12px 24px!important;background:linear-gradient(180deg,#050a19 0%,rgba(5,10,25,.94) 75%,rgba(5,10,25,.85) 100%)!important;z-index:5}
+.site-header .site-brand{padding-left:64px;display:flex;flex-direction:column;justify-content:center;min-height:48px;position:relative}
+.site-header .site-brand:before{content:'HD';position:absolute;left:0;top:0;width:48px;height:48px;display:grid;place-items:center;border:2px solid #e8a75a;border-radius:50%;background:radial-gradient(circle at 30% 25%,#9b6538,#151b30 70%);font:700 19px Georgia,serif;color:#f9e2bd;box-shadow:0 0 0 4px #ffffff10}
+.site-header .site-brand b{color:#f4efe4!important;font-size:15px;letter-spacing:.1em}
+.site-header .site-brand small{color:#9ba7c0!important;font-size:11px;margin:4px 0 0}
+.site-tabs{display:flex;gap:4px;padding:5px;background:#070d20;border:1px solid #ffffff22;border-radius:40px}
+.site-tabs button{border:0!important;background:transparent!important;color:#aab4c9!important;border-radius:30px!important;padding:9px 20px!important;font-weight:700;font-size:13px}
+.site-tabs button[aria-current=page]{background:linear-gradient(120deg,#9b6538,#d3964c)!important;color:#fff!important}
+.site-links{display:flex;gap:9px;justify-content:flex-end}
+.site-links button{border:1px solid #ffffff26!important;border-radius:24px!important;background:#070d20bd!important;color:#d4d9e7!important;padding:9px 15px!important;font-size:12px;font-weight:700;letter-spacing:.02em}
+.scene-tools{position:fixed!important;top:94px;right:22px;left:auto;z-index:4;display:flex!important;justify-content:flex-end;gap:6px;background:#070d20d9;border:1px solid #ffffff1e;border-radius:30px;padding:5px;backdrop-filter:blur(12px)}
+.scene-tools button{padding:7px 11px!important;border-radius:22px!important;font-size:12px!important}
+#hero{top:82px!important}
+@media(max-width:1000px){.site-header{grid-template-columns:1fr auto!important;gap:8px!important}.site-tabs{grid-column:2;grid-row:1}.site-links{display:none}.scene-tools{top:91px;right:10px;max-width:calc(100vw - 20px);overflow-x:auto}}
+@media(max-width:650px){.site-header{height:72px!important;min-height:72px!important;padding:9px 12px!important;grid-template-columns:minmax(0,1fr) auto!important}.site-header .site-brand{padding-left:45px!important;min-height:38px}.site-header .site-brand:before{width:36px;height:36px;font-size:14px}.site-header .site-brand b{font-size:11px}.site-header .site-brand small{font-size:9px}.site-tabs{padding:3px}.site-tabs button{font-size:11px;padding:7px 10px!important}.scene-tools{top:80px;right:8px}.scene-tools button{font-size:11px!important;padding:6px 8px!important}#hero{top:72px!important}}
 </style></head>
 <body data-m="n">
 <canvas id="c" role="img" aria-label="Cidade 3D interativa com os nove projetos"></canvas>
-<header><div><b>HIGOR DORNELAS</b><small>Portfólio da cidade</small></div>
-<div class="bar"><button id="openfolio">Sobre mim ↗</button><button id="bd">☀ Dia</button><button id="bn">☾ Noite</button><button id="zo" aria-label="Diminuir zoom">−</button><button id="zi" aria-label="Aumentar zoom">+</button><button id="hm">Visão geral</button><button id="nm" aria-pressed="true">Nomes</button></div></header>
+<header class="site-header"><div class="site-brand"><b>HIGOR DORNELAS</b><small>Portfólio da cidade</small></div><nav class="site-tabs" aria-label="Visualizações"><button id="citytab" aria-current="page">Cidade</button><button id="projectstab">Projetos</button></nav><nav class="site-links" aria-label="Páginas"><button id="abouttab">SOBRE</button><button id="contacttab">CONTATO</button></nav></header><div class="bar scene-tools" aria-label="Controles da cidade"><button id="bd">☀ Dia</button><button id="bn">☾ Noite</button><button id="zo" aria-label="Diminuir zoom">−</button><button id="zi" aria-label="Aumentar zoom">+</button><button id="hm">Visão geral</button><button id="nm" aria-pressed="true">Nomes</button></div>
 <section id="hero"><h1>Explore meus <em>projetos.</em></h1><p>Cada edifício representa algo que criei, desenvolvi ou estou construindo. Explore a cidade e conheça os projetos.</p><button id="go">Explorar a Agadê</button><div class="city-stats"><h3>Resumo da cidade <span style="float:right;color:#65d9a0">● Atualizado</span></h3><div class="stats-row"><div><strong>09</strong><small>Projetos</small></div><div><strong>07</strong><small>Desenvolvidos</small></div><div><strong>01</strong><small>Em construção</small></div><div><strong>01</strong><small>Planejado</small></div></div></div><div class="city-activity"><h3>Em destaque</h3><div class="activity-list"><div class="activity-item"><div class="activity-main"><strong>Agadê</strong><span>Marca de óculos</span></div><small>Em desenvolvimento</small></div><div class="activity-item"><div class="activity-main"><strong>Lumear</strong><span>Arquitetura e construção</span></div><small>Em construção</small></div><div class="activity-item"><div class="activity-main"><strong>Pastelaria PDV</strong><span>Projeto futuro</span></div><small>Planejado</small></div></div></div></section>
 <div id="lbs"></div>
 <aside id="pn" hidden aria-live="polite"><button id="x" aria-label="Fechar">×</button><p id="k"></p><h2 id="h"></h2><p id="d"></p><div id="ch"></div><div id="ln"></div><div class="nv"><button id="pv">← Anterior</button><button id="nx">Próximo →</button></div></aside>
@@ -185,7 +201,10 @@ body[data-m=d] .city-activity .activity-item>small{color:#c5cfe1!important}
 const folio=document.getElementById('folio');
 const showFolio=(section='sobre')=>{folio.hidden=false;document.getElementById('pn').hidden=true;document.getElementById('hero').hidden=true;document.getElementById('lbs').hidden=true;document.getElementById('c').style.visibility='hidden';document.getElementById(section)?.scrollIntoView({block:'start'});};
 const showCity=()=>{folio.hidden=true;document.getElementById('c').style.visibility='visible';document.getElementById('lbs').hidden=document.getElementById('nm').getAttribute('aria-pressed')!=='true';document.getElementById('hero').hidden=false;};
-document.getElementById('openfolio').addEventListener('click',()=>showFolio('sobre'));
+document.getElementById('projectstab').addEventListener('click',()=>showFolio('projetos'));
+document.getElementById('abouttab').addEventListener('click',()=>showFolio('sobre'));
+document.getElementById('contacttab').addEventListener('click',()=>showFolio('contato'));
+document.getElementById('citytab').addEventListener('click',()=>showCity());
 document.querySelectorAll('[data-folio-target]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const t=el.getAttribute('data-folio-target');if(t==='cidade')showCity();else showFolio(t)}));
 const T3=THREE,$=s=>document.querySelector(s),RM=matchMedia('(prefers-reduced-motion:reduce)').matches,lite=matchMedia('(pointer:coarse)').matches;
 let sd=11;const R=()=>(sd=sd*16807%2147483647)/2147483647,D=Math.PI/180,s2=Math.SQRT1_2;
