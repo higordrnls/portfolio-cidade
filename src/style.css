@@ -2,3 +2,36 @@
 
 /* Revisão da implantação e da experiência de navegação */
 .viewport{background:var(--paper);overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:610px}.stage{width:100%;min-width:0;transition:transform .32s ease;will-change:transform}.city-svg{width:100%;height:auto;max-height:800px;overflow:visible}.intro{box-shadow:0 20px 70px #101b1e35;backdrop-filter:blur(14px)}.building:hover{filter:drop-shadow(0 0 18px #ffc86c)}.city-svg .roof{fill:#b5a28d}.city-svg .facade{fill:#d7d3cb}.city-svg .side{fill:#827f78}.city-svg.day .sky-start{stop-color:#94b9b5}.city-svg.day .sky-end{stop-color:#d5d3b4}.city-svg.night .sky-start{stop-color:#101c35}.city-svg.night .sky-end{stop-color:#304563}.city-svg.night .terrain{fill:#3d5754}.city-svg.night .roof{fill:#3b4557}.city-svg.night .facade{fill:#566473}.city-svg.night .side{fill:#293d50}.city-svg.night .window{fill:#e9bd79}.city-svg .marker{fill:#162b37;stroke:#c2a274}.city-svg .marker-number{fill:#f9e6c4}.route-list button:hover{border-color:#b4744c;transform:translateY(-2px)}.panel-body p{font-size:15px;line-height:1.85}.panel-body h2{letter-spacing:-1.4px}@media(max-width:850px){.viewport{min-height:420px;overflow:auto}.stage{min-width:850px}}
+
+/* Cidade 2.0 — atmosfera editorial e cenário contínuo */
+.app{--paper:#071521;--ink:#f1f5f5;--panel:#0b1a2bdc;--muted:#b3c2ca;background:#071521;color:#f1f5f5}
+.app.day{--paper:#102632;--ink:#f4f7f3;--panel:#0b2132e8;--muted:#c3d2d5}
+.app.night{--paper:#060d1c;--ink:#f4f4f8;--panel:#071124eb;--muted:#b9c4dc}
+header{position:relative;z-index:5;background:#071320;border-bottom:1px solid #ffffff22;padding:19px 4vw}
+.brand strong{letter-spacing:-.7px}.brand span,.eyebrow{color:#d8ad81}
+main{overflow:hidden}
+.controls{position:absolute;top:10px;right:0;z-index:8;padding:14px 3vw}
+.controls button{border-color:#ffffff44;background:#071522b8;color:#fff;backdrop-filter:blur(16px)}
+.controls button.active{background:#b87855;border-color:#b87855}
+.viewport{height:min(78vw,840px);min-height:650px;background:#172f38;overflow:hidden;position:relative}
+.viewport:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#0614228a,transparent 38%,transparent 78%,#06142248),linear-gradient(0deg,#06142299,transparent 27%);z-index:1}
+.stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;min-width:0}
+.city-svg{width:100%;height:100%;max-height:none;min-width:1150px;object-fit:cover}
+.intro{position:absolute;top:112px;left:4vw;z-index:7;width:320px;background:#08182acb;color:#f6f4ec;border:1px solid #c9dce122;box-shadow:0 20px 70px #0008;border-radius:20px;padding:30px;backdrop-filter:blur(22px)}
+.intro h1{font-size:35px;line-height:1.13}.intro h1 em{color:#d99d77}
+.intro p{color:#c4d2d9}
+.terrain{fill:#a3b3a0}.park{fill:#728e73}.roads{stroke:#495e62}.road-mark{stroke:#d8c5a0}
+.city-svg.day .sky-start{stop-color:#668c9b}.city-svg.day .sky-end{stop-color:#b6b5a0}
+.city-svg.night .terrain{fill:#3a565b}.city-svg.night .park{fill:#304c49}.city-svg.night .roads{stroke:#253e4d}
+.city-svg.night .context-city{filter:brightness(.55)}.city-svg.night .waterfront{filter:brightness(.58)}
+.city-svg.night .window{fill:#ffda8d}.city-svg.night .arcade-window{fill:#f3a0f2}
+.city-svg.night .server-window{fill:#8fcefa}.city-svg.night .lab-window{fill:#9debd0}
+.city-svg.day .arcade-window{fill:#8d3c99}.city-svg.day .server-window{fill:#3c667e}
+.city-svg.day .lab-window{fill:#387d77}
+.building{transition:filter .2s,opacity .2s}.building:hover,.building:focus-visible{filter:drop-shadow(0 0 17px #f4c88c) brightness(1.18)}
+.marker{fill:#0a1d2b;stroke:#e7b77f}.marker-number{fill:#fff0d7}
+.caption{background:#081726;color:#c5cdd3;padding:17px 4vw}
+.route{background:#081726}.route-list button{background:#11293b;color:#f0f4f5;border:1px solid #ffffff28}
+.route-list small{color:#b7c7d1}footer{background:#081726;border-color:#ffffff22}
+.panel{background:#0b1d2e;color:#f4f7f8}.panel-body h3{color:#dda680}.panel-body p{color:#c6d0d7}
+@media(max-width:850px){.intro{position:relative;top:auto;left:auto;margin:0;width:100%;border-radius:0;padding:24px}.controls{position:relative;top:auto;right:auto;background:#081726;justify-content:center}.viewport{min-height:450px;height:58vh}.city-svg{min-width:850px}.stage{min-width:850px}.intro h1{font-size:30px}}
