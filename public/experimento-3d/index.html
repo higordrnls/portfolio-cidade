@@ -180,6 +180,13 @@ body[data-m=d] .city-activity .activity-item>small{color:#c5cfe1!important}
 #hero{top:82px!important}
 @media(max-width:1000px){.site-header{grid-template-columns:1fr auto!important;gap:8px!important}.site-tabs{grid-column:2;grid-row:1}.site-links{display:none}.scene-tools{top:91px;right:10px;max-width:calc(100vw - 20px);overflow-x:auto}}
 @media(max-width:650px){.site-header{height:72px!important;min-height:72px!important;padding:9px 12px!important;grid-template-columns:minmax(0,1fr) auto!important}.site-header .site-brand{padding-left:45px!important;min-height:38px}.site-header .site-brand:before{width:36px;height:36px;font-size:14px}.site-header .site-brand b{font-size:11px}.site-header .site-brand small{font-size:9px}.site-tabs{padding:3px}.site-tabs button{font-size:11px;padding:7px 10px!important}.scene-tools{top:80px;right:8px}.scene-tools button{font-size:11px!important;padding:6px 8px!important}#hero{top:72px!important}}
+</style><style>
+/* Etiquetas compactas para não encobrir as edificações vizinhas */
+.lb{width:158px!important;max-width:158px!important;box-sizing:border-box!important;padding:7px 8px!important;gap:6px!important}
+.lb span{font-size:11px!important;line-height:1.2!important;overflow-wrap:anywhere}
+.lb small{font-size:9px!important;line-height:1.2!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal}
+.lb b{width:26px!important;height:26px!important;font-size:11px!important}
+@media(max-width:720px){.lb{width:122px!important;max-width:122px!important;padding:5px!important}.lb span{font-size:10px!important}.lb b{width:22px!important;height:22px!important}}
 </style></head>
 <body data-m="n">
 <canvas id="c" role="img" aria-label="Cidade 3D interativa com os nove projetos"></canvas>
@@ -328,7 +335,7 @@ for(const m of ALL){const u=m.userData;m.emissiveIntensity=(u.t==='w'?.06+1.14*k
 if(!RM){spin.rotation.y+=dt;spin.rotation.x+=dt*.6;jet.scale.y=1+.18*Math.sin(now*.005);boat.position.y=Math.sin(now*.0016)*.08;boat.rotation.z=Math.sin(now*.0012)*.03;cars.forEach(q=>q.a+=q.v*dt)}
 cars.forEach((q,i)=>{du.position.set(q.r*Math.cos(q.a),.3,q.r*Math.sin(q.a));du.rotation.set(0,-q.a-(q.v>0?Math.PI/2:-Math.PI/2),0);du.scale.set(1,1,1);du.updateMatrix();cm.setMatrixAt(i,du.matrix)});cm.instanceMatrix.needsUpdate=true;if(cm.instanceColor)cm.instanceColor.needsUpdate=true;
 cam.position.set(T.x+45,40.5,T.z+45);cam.lookAt(T.x,0,T.z);cam.updateMatrixWorld();
-P.forEach((o,i)=>{pv3.set(o.p[0],o.y,o.p[1]).project(cam);const x=(pv3.x+1)/2*innerWidth,y=(1-pv3.y)/2*innerHeight;LB[i].style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`});
+P.forEach((o,i)=>{pv3.set(o.p[0],o.y,o.p[1]).project(cam);const x=(pv3.x+1)/2*innerWidth,y=(1-pv3.y)/2*innerHeight;const b=LB[i],w=b.offsetWidth||170,hh=b.offsetHeight||65;const ox=[-18,-8,10,-26,26,12,-12,-42,-8][i],oy=[-14,-18,-12,-12,16,14,-24,-18,-12][i];const px=Math.max(w/2+8,Math.min(innerWidth-w/2-8,x+ox)),py=Math.max(hh+88,Math.min(innerHeight-12,y+oy));b.style.transform=`translate(${Math.round(px)}px,${Math.round(py)}px) translate(-50%,-100%)`;});
 rd.render(sc,cam);requestAnimationFrame(fr)}
 requestAnimationFrame(fr);
 })();
