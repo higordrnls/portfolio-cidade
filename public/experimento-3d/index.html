@@ -94,6 +94,13 @@ header .bar button[aria-pressed=true]{background:#a36d38;border-color:#dca35d;co
 .city-activity p{display:flex;justify-content:space-between;gap:9px;align-items:baseline}
 .city-activity p small{font-size:9px;color:#9daec7;text-align:right;flex-shrink:0}
 @media(max-width:1050px){.city-stats .stats-row{grid-template-columns:repeat(2,1fr);gap:15px}.city-stats .stats-row div:nth-child(2){border:0}}
+</style><style>
+/* Corrige a emenda entre cabeçalho, painel lateral e cena WebGL. */
+header{background:#050a19!important;border-bottom:1px solid rgba(255,255,255,.08)}
+#hero{background:#050a19!important;scrollbar-width:none}
+#hero::-webkit-scrollbar{display:none}
+@media(min-width:1051px){header{grid-template-columns:321px minmax(0,1fr) auto}#c{left:345px;width:calc(100% - 345px)}}
+@media(max-width:1050px){header{background:#050a19!important}}
 </style></head>
 <body data-m="n">
 <canvas id="c" role="img" aria-label="Cidade 3D interativa com os nove projetos"></canvas>
