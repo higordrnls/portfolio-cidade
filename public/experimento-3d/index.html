@@ -335,7 +335,7 @@ for(const m of ALL){const u=m.userData;m.emissiveIntensity=(u.t==='w'?.06+1.14*k
 if(!RM){spin.rotation.y+=dt;spin.rotation.x+=dt*.6;jet.scale.y=1+.18*Math.sin(now*.005);boat.position.y=Math.sin(now*.0016)*.08;boat.rotation.z=Math.sin(now*.0012)*.03;cars.forEach(q=>q.a+=q.v*dt)}
 cars.forEach((q,i)=>{du.position.set(q.r*Math.cos(q.a),.3,q.r*Math.sin(q.a));du.rotation.set(0,-q.a-(q.v>0?Math.PI/2:-Math.PI/2),0);du.scale.set(1,1,1);du.updateMatrix();cm.setMatrixAt(i,du.matrix)});cm.instanceMatrix.needsUpdate=true;if(cm.instanceColor)cm.instanceColor.needsUpdate=true;
 cam.position.set(T.x+45,40.5,T.z+45);cam.lookAt(T.x,0,T.z);cam.updateMatrixWorld();
-P.forEach((o,i)=>{pv3.set(o.p[0],o.y,o.p[1]).project(cam);const x=(pv3.x+1)/2*innerWidth,y=(1-pv3.y)/2*innerHeight;const b=LB[i],w=b.offsetWidth||170,hh=b.offsetHeight||65;const ox=[120,125,35,-76,26,90,140,125,130][i],oy=[55,55,55,-12,16,55,55,100,55][i];const px=Math.max(w/2+8,Math.min(innerWidth-w/2-8,x+ox)),py=Math.max(hh+88,Math.min(innerHeight-12,y+oy));b.style.transform=`translate(${Math.round(px)}px,${Math.round(py)}px) translate(-50%,-100%)`;});
+P.forEach((o,i)=>{pv3.set(o.p[0],o.y,o.p[1]).project(cam);const x=(pv3.x+1)/2*innerWidth,y=(1-pv3.y)/2*innerHeight;const b=LB[i],w=b.offsetWidth||170,hh=b.offsetHeight||65;const ox=[220,225,135,124,126,140,190,175,180][i],oy=[55,55,55,-12,66,55,55,100,55][i];const px=Math.max(w/2+8,Math.min(innerWidth-w/2-8,x+ox)),py=Math.max(hh+88,Math.min(innerHeight-12,y+oy));b.style.transform=`translate(${Math.round(px)}px,${Math.round(py)}px) translate(-50%,-100%)`;});
 rd.render(sc,cam);requestAnimationFrame(fr)}
 requestAnimationFrame(fr);
 })();
