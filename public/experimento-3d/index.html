@@ -133,6 +133,36 @@ body[data-m=d] #pn{color:#f4efe4!important}
 body[data-m=d] #pn #d{color:#c4cde0!important}
 body[data-m=d] #pn h2{color:#fff4e5!important}
 body[data-m=d] header button,body[data-m=d] #hero button{color:#f4efe4!important}
+</style><style>
+/* Tema diurno: manter o chrome da interface escuro e legível, independente do cenário. */
+body[data-m=d]{--tx:#f4efe4;--mu:#b9c6dc;--pn:rgba(6,11,25,.93);--ln:rgba(255,255,255,.19)}
+body[data-m=d] header,body[data-m=d] #hero{background:#050a19!important;color:#f4efe4!important}
+body[data-m=d] header b,body[data-m=d] header small,body[data-m=d] #hero h1,body[data-m=d] #hero h1 em,body[data-m=d] #hero:before,body[data-m=d] #hero p,body[data-m=d] #hero button,body[data-m=d] .city-stats h3,body[data-m=d] .city-activity h3{color:inherit}
+body[data-m=d] #hero h1 em,body[data-m=d] #hero:before{color:#e8a75a!important}
+body[data-m=d] header b,body[data-m=d] #hero h1,body[data-m=d] #hero #go,body[data-m=d] .city-stats h3,body[data-m=d] .city-activity h3{color:#f4efe4!important}
+body[data-m=d] header small,body[data-m=d] #hero p{color:#b9c6dc!important}
+body[data-m=d] #hero #go{background:transparent!important;border-color:#e8a75a!important}
+body[data-m=d] header .bar button{color:#f4efe4!important}
+body[data-m=d] header .bar button[aria-pressed=true]{background:#a36d38!important;color:#fff!important}
+body[data-m=d] .city-stats,body[data-m=d] .city-activity{background:#081126!important}
+body[data-m=d] .city-stats strong{color:#fff!important}
+body[data-m=d] .city-activity .activity-main strong{color:#f0b36c!important}
+body[data-m=d] .city-activity .activity-main span{color:#c5cfe1!important}
+body[data-m=d] .city-activity .activity-item>small{color:#c5cfe1!important}
+#hero{scrollbar-width:none!important}#hero::-webkit-scrollbar{display:none!important}
+.city-stats .stats-row{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important}
+.city-stats .stats-row div{padding:0 6px!important;border-right:1px solid #ffffff1a!important}
+.city-stats .stats-row div:first-child{padding-left:0!important}
+.city-stats .stats-row div:last-child{border-right:0!important}
+.city-stats .stats-row strong{font-size:19px!important}
+.city-stats .stats-row small{font-size:9px!important;overflow-wrap:normal;line-height:1.4!important}
+.city-activity .activity-item{display:block!important;padding:12px 0!important}
+.city-activity .activity-main{display:flex!important;flex-direction:row!important;justify-content:space-between;gap:12px;align-items:baseline}
+.city-activity .activity-main strong{flex-shrink:0}
+.city-activity .activity-main span{font-size:11px!important;text-align:right}
+.city-activity .activity-item>small{display:block;text-align:right!important;max-width:none!important;margin-top:4px;font-size:10px!important}
+@media(min-width:1051px){header{grid-template-columns:321px minmax(0,1fr) auto!important}}
+@media(max-width:1050px){.city-stats .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:12px!important}.city-stats .stats-row div:nth-child(2){border-right:0!important}}
 </style></head>
 <body data-m="n">
 <canvas id="c" role="img" aria-label="Cidade 3D interativa com os nove projetos"></canvas>
