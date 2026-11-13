@@ -1,7 +1,7 @@
 name: Build and deploy city
 on:
   push:
-    branches: [main, feat/cidade-v2-render]
+    branches: [main, feat/cidade-v2-render, feat/cidade-2d-interativa]
   workflow_dispatch:
 permissions:
   contents: read
