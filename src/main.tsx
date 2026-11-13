@@ -4,7 +4,7 @@ import{projects,type Project}from'./projects';
 import './style.css';
 import CityScene from './CityScene';
 const list=[...projects].sort((a,b)=>a.order-b.order);
-function App(){[active,setActive]=useState<Project|null>(null),[night,setNight]=useState(true),[zoom,setZoom]=useState(1),[pan,setPan]=useState({x:0,y:0}),[labels,setLabels]=useState(true);const drag=useRef<{x:number,y:number,px:number,py:number}|null>(null);
+function App(){const[active,setActive]=useState<Project|null>(null),[night,setNight]=useState(true),[zoom,setZoom]=useState(1),[pan,setPan]=useState({x:0,y:0}),[labels,setLabels]=useState(true);const drag=useRef<{x:number,y:number,px:number,py:number}|null>(null);
 const zoomBy=(n:number)=>setZoom(v=>Math.max(.5,Math.min(2.5,Math.round((v+n)*100)/100)));
 const step=(n:number)=>setActive(a=>a?list[(list.findIndex(p=>p.id===a.id)+n+list.length)%list.length]:null);
 useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setActive(null);if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key)},[]);
