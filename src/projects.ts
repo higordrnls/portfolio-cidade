@@ -1,0 +1,122 @@
+export type Project={id:string;order:number;name:string;subtitle:string;description:string;status:'built'|'building'|'planned';repo?:string;deploy?:string;x:number;y:number;w:number;h:number};
+// Percurso editorial definido pelo autor; a localização geográfica dos edifícios é independente da numeração.
+export const projects:Project[]=[
+  {
+    "id": "dash",
+    "order": 1,
+    "name": "Dashboard Vendas Power BI",
+    "subtitle": "Inteligência comercial",
+    "description": "Painéis de vendas e indicadores de desempenho.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/Dashboard-Vendas-PowerBI",
+    "x": 270,
+    "y": 276,
+    "w": 225,
+    "h": 185
+  },
+  {
+    "id": "kanban",
+    "order": 2,
+    "name": "Kanban Financeiro",
+    "subtitle": "Organização e planejamento",
+    "description": "Fluxos visuais para organizar finanças.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/Kanban-Financeiro",
+    "x": 810,
+    "y": 58,
+    "w": 255,
+    "h": 208
+  },
+  {
+    "id": "archdaily",
+    "order": 3,
+    "name": "ArchDaily Pipeline Creator",
+    "subtitle": "Pesquisa e automação",
+    "description": "Pipeline de coleta e organização de dados de arquitetura.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/ArchDaily-Pipeline-Creator",
+    "x": 452,
+    "y": 66,
+    "w": 280,
+    "h": 205
+  },
+  {
+    "id": "retro",
+    "order": 4,
+    "name": "Retro Game Y2K",
+    "subtitle": "Jogos e experimentação",
+    "description": "Jogo experimental com linguagem visual Y2K.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/retro-game-2000",
+    "x": 265,
+    "y": 518,
+    "w": 325,
+    "h": 224
+  },
+  {
+    "id": "hevy",
+    "order": 5,
+    "name": "Hevy AI Automator",
+    "subtitle": "Automação e inteligência",
+    "description": "Automação com TypeScript e ferramentas de navegador.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/hevy-ai-automator",
+    "x": 1090,
+    "y": 103,
+    "w": 278,
+    "h": 215
+  },
+  {
+    "id": "distributed",
+    "order": 6,
+    "name": "Distributed Wagering Processor",
+    "subtitle": "Sistemas distribuídos",
+    "description": "Processamento transacional, concorrência, mensageria e Tigrinho de Mentirinha como demonstração independente.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/distributed-wagering-processor",
+    "deploy": "https://distributed-wagering-processor.pages.dev/",
+    "x": 1280,
+    "y": 276,
+    "w": 280,
+    "h": 204
+  },
+  {
+    "id": "agade",
+    "order": 7,
+    "name": "Agadê",
+    "subtitle": "Marco central · design e produto",
+    "description": "Conceito de marca de óculos idealizado em 2021, unindo design, fabricação digital e experiência web. O catálogo é conceitual.",
+    "status": "built",
+    "repo": "https://github.com/higordrnls/agade",
+    "deploy": "https://agade.vercel.app/",
+    "x": 595,
+    "y": 270,
+    "w": 517,
+    "h": 358
+  },
+  {
+    "id": "lumear",
+    "order": 8,
+    "name": "Lumear",
+    "subtitle": "Arquitetura em construção",
+    "description": "Projeto de arquitetura e construção em desenvolvimento.",
+    "status": "building",
+    "repo": "https://github.com/higordrnls/lumear",
+    "x": 1307,
+    "y": 470,
+    "w": 290,
+    "h": 230
+  },
+  {
+    "id": "pastelaria",
+    "order": 9,
+    "name": "Pastelaria PDV",
+    "subtitle": "Lote reservado",
+    "description": "Futuro sistema de ponto de venda da Dornelas Pastelaria, ainda sem repositório.",
+    "status": "planned",
+    "x": 1183,
+    "y": 692,
+    "w": 365,
+    "h": 179
+  }
+];
