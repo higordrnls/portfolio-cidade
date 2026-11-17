@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Higor Dornelas — Cidade-Portfólio</title><meta name="description" content="Explore a cidade-portfólio de Higor Dornelas: nove projetos que conectam arquitetura, tecnologia, dados e criação."><meta property="og:title" content="Higor Dornelas | Cidade-Portfólio"><meta property="og:description" content="Uma cidade interativa em 3D. Cada edifício representa um projeto. Explore arquitetura, tecnologia, dados e criação."><meta property="og:type" content="website"><meta property="og:url" content="https://higordrnls.github.io/portfolio-cidade/"><meta name="twitter:card" content="summary">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#070b16;--pn:rgba(13,17,30,.86);--tx:#f4efe4;--mu:#aab0c4;--ac:#f2a84b;--ln:rgba(255,255,255,.16)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body[data-m=d]{--bg:#bcd6e8;--pn:rgba(255,255,255,.9);--tx:#1b2133;--mu:#4b5570;--ln:rgba(20,30,60,.2)}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+header{position:fixed;left:0;right:0;top:0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 12px;background:linear-gradient(var(--bg),transparent);z-index:5}
+header b{letter-spacing:.06em}header small{color:var(--ac);margin-left:10px;font-size:11px}
+.bar{display:flex;gap:6px;flex-wrap:wrap}
+button{font:inherit;color:var(--tx);background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:7px 12px;cursor:pointer;backdrop-filter:blur(8px)}
+button:hover{border-color:var(--ac)}button[aria-pressed=true]{background:#6b46e0;color:#fff;border-color:#6b46e0}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+#hero{position:fixed;left:16px;top:84px;width:290px;padding:20px;background:var(--pn);border:1px solid var(--ln);border-radius:16px;backdrop-filter:blur(10px);z-index:4}
+#hero h1{font:700 30px/1.1 Georgia,serif;margin:0 0 10px}#hero em{color:var(--ac);font-style:normal}
+#hero p{color:var(--mu);margin:0 0 14px}
+.lb{position:fixed;left:0;top:0;z-index:3;display:flex;gap:8px;align-items:center;padding:5px 11px 5px 5px;border-radius:999px;white-space:nowrap;will-change:transform;text-align:left}
+.lb b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#201808;font-size:12px}
+.lb span{font-weight:600;font-size:12px;line-height:1.15}.lb small{display:block;font-weight:400;color:var(--mu);font-size:10px}
+.lb.on{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
+#pn{position:fixed;right:16px;top:84px;width:330px;max-height:calc(100% - 110px);overflow:auto;padding:20px;background:var(--pn);border:1px solid var(--ln);border-radius:16px;backdrop-filter:blur(12px);z-index:6}
+#pn[hidden],#hero[hidden],#err[hidden]{display:none}
+#pn h2{font:700 26px/1.15 Georgia,serif;margin:4px 0 8px}#pn p{margin:0 0 12px}#d{color:var(--mu)}#k{color:var(--ac);font-weight:600;margin:0}
+#ch span{display:inline-block;border:1px solid var(--ln);border-radius:999px;padding:2px 9px;margin:0 6px 6px 0;font-size:12px}
+#ln a{display:inline-block;padding:7px 12px;border-radius:10px;background:var(--ac);color:#201808;text-decoration:none;font-weight:600;margin:0 6px 6px 0}
+#ln small{color:var(--mu)}
+#x{position:absolute;right:12px;top:12px;padding:2px 9px;font-size:18px}
+.nv{display:flex;gap:8px;margin-top:14px}.nv button{flex:1}
+#err{position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:24px}
+@media(max-width:720px){#hero{display:none}#pn{left:0;right:0;top:auto;bottom:0;width:auto;max-height:44%;border-radius:18px 18px 0 0;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}}
+.render-link{color:var(--tx);font-size:12px;padding:8px;text-decoration:none;border-bottom:1px solid var(--ac)}.render-link:hover{color:var(--ac)}@media(max-width:720px){.render-link{font-size:11px;padding:4px}} </style><style>
+.folio-nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap}.folio-nav button{font-size:12px;padding:7px 9px}.folio-nav button[aria-current=page]{color:#f2a84b;border-color:#f2a84b}
+#folio{position:fixed;inset:0;overflow-y:auto;overscroll-behavior:contain;background:#090e1b;color:#f4efe4;z-index:7;scroll-behavior:smooth}
+#folio[hidden]{display:none}#folio .folio-top{position:sticky;top:0;z-index:9;background:rgba(9,14,27,.95);backdrop-filter:blur(18px);border-bottom:1px solid #ffffff22;padding:15px max(24px,calc((100vw - 1200px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.folio-brand{font-weight:800;letter-spacing:.12em;font-size:12px;color:#f4efe4;text-decoration:none}.folio-brand em{font-style:normal;color:#f2a84b}
+.folio-content{max-width:1200px;margin:auto;padding:0 24px 80px}.folio-section{padding:90px 0;border-bottom:1px solid #ffffff20;scroll-margin-top:100px}
+.folio-eyebrow{font-size:11px;letter-spacing:.22em;color:#f2a84b;text-transform:uppercase;font-weight:700}
+.folio-section h2{font:normal clamp(38px,6vw,80px)/1.08 Georgia,serif;letter-spacing:-.035em;margin:16px 0 30px;max-width:860px}
+.folio-lead{font-size:clamp(17px,2.3vw,23px);line-height:1.65;color:#c6c9d4;max-width:760px}
+.folio-intro{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(220px,.65fr);gap:60px;align-items:center;min-height:540px}
+.folio-photo{aspect-ratio:3/4;border:1px solid #f2a84b55;background:radial-gradient(circle at 70% 25%,#85542f66,transparent 45%),linear-gradient(145deg,#202d40,#101827);border-radius:140px 140px 12px 12px;display:grid;place-items:center;overflow:hidden;position:relative}
+.folio-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.folio-photo .monogram{font:normal 100px Georgia,serif;color:#f2a84b}
+.folio-photo figcaption{position:absolute;bottom:14px;left:15px;right:15px;background:#0a0e1bcc;padding:8px;font-size:11px;text-align:center;color:#e9d7bc;letter-spacing:.12em}
+.folio-chips{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0}.folio-chips span{border:1px solid #ffffff33;border-radius:99px;padding:8px 14px;color:#e8dcc8;font-size:12px}
+.folio-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.folio-actions a,.folio-actions button,.folio-card-links a{background:#f2a84b;color:#1c1720;text-decoration:none;border-radius:10px;padding:12px 18px;font-weight:750;border:0;display:inline-block}
+.folio-actions .ghost,.folio-card-links a:nth-child(2){background:transparent;color:#f4efe4;border:1px solid #ffffff50}
+.folio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.folio-card{border:1px solid #ffffff25;border-radius:18px;background:linear-gradient(145deg,#182135,#101625);padding:24px;display:flex;flex-direction:column;min-height:300px}
+.folio-card-head{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:#f2a84b;letter-spacing:.09em}.folio-card h3{font:normal 28px/1.16 Georgia,serif;margin:22px 0 7px}.folio-card p{color:#b9bece;line-height:1.7}.folio-card .folio-sub{color:#f2c99d;font-size:12px;margin:0}.folio-card-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto;padding-top:20px}.folio-card-links a{font-size:12px;padding:9px 12px}
+.folio-split{display:grid;grid-template-columns:1fr 1fr;gap:24px}.folio-block{padding:28px;background:#141c2c;border:1px solid #ffffff25;border-radius:16px}.folio-block h3{font:normal 25px Georgia,serif;color:#f2c99d}.folio-block p{color:#c3c8d5;line-height:1.7}
+.folio-timeline{border-left:1px solid #f2a84b77;padding-left:24px;display:grid;gap:24px}.folio-timeline article{position:relative}.folio-timeline article:before{content:'';position:absolute;left:-30px;top:7px;width:10px;height:10px;background:#f2a84b;border-radius:50%}.folio-timeline small{color:#f2a84b}.folio-timeline h3{margin:5px 0;font-size:19px}.folio-timeline p{margin:4px 0;color:#b7bdcd}
+.folio-foot{padding:40px 0;color:#8e96aa;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:850px){.folio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.folio-intro{gap:24px}.folio-nav{gap:2px}}
+@media(max-width:650px){.folio-intro,.folio-split,.folio-grid{grid-template-columns:1fr}.folio-photo{max-width:290px;width:100%;margin:auto}.folio-section{padding:55px 0}.folio-content{padding:0 18px 50px}#folio .folio-top{padding:12px 18px}.folio-nav button{font-size:11px;padding:6px 7px}}
+@media(prefers-reduced-motion:reduce){#folio{scroll-behavior:auto}}
+</style><style>
+/* Interface editorial sobre a cidade: inspiração de composição, identidade própria */
+:root{--ac:#e8a75a;--pn:rgba(6,11,25,.88)}
+header{height:78px;box-sizing:border-box;display:grid;grid-template-columns:330px 1fr auto;align-items:center;gap:18px;padding:14px 24px;background:linear-gradient(180deg,rgba(4,8,20,.98),rgba(4,8,20,.62) 70%,transparent)}
+header>div:first-child{display:flex;flex-direction:column;line-height:1.15;padding-left:64px;position:relative;min-height:44px;justify-content:center}
+header>div:first-child:before{content:'HD';position:absolute;left:0;top:-2px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;border:2px solid #e8a75a;background:radial-gradient(circle at 30% 25%,#9b6538,#151b30 70%);font:700 19px Georgia,serif;color:#f9e2bd;box-shadow:0 0 0 4px #ffffff10}
+header b{font-size:15px;letter-spacing:.12em}header small{margin:4px 0 0;color:#9ba7c0}
+header .bar{justify-content:center;gap:6px}header .bar button{border-radius:24px;padding:9px 13px;background:#0b1227d9;font-size:12px}
+header .bar button[aria-pressed=true]{background:#a36d38;border-color:#dca35d;color:#fff}
+#hero{left:0;top:78px;bottom:0;width:345px;box-sizing:border-box;padding:36px 28px 22px 32px;border:0;border-right:1px solid #ffffff12;border-radius:0;background:linear-gradient(90deg,rgba(3,8,23,.98),rgba(3,8,23,.92));backdrop-filter:blur(16px);overflow:auto}
+#hero:before{content:'Olá, visitante! 👋';display:block;color:#e9b575;font-weight:700;font-size:13px;margin:10px 0 20px}
+#hero h1{font:700 clamp(30px,3vw,40px)/1.07 system-ui,sans-serif;letter-spacing:-.045em;margin-bottom:30px}
+#hero p{font-size:13px;line-height:1.7;color:#c7cde0;margin-bottom:24px}
+#hero #go{border-radius:24px;border-color:#b8864b;background:transparent;font-weight:700;padding:12px 22px}
+#hero #go:after{content:'  →'}
+.city-stats,.city-activity{margin-top:28px;padding:17px 14px;border:1px solid #24324c;border-radius:14px;background:#071127d9}
+.city-stats h3,.city-activity h3{font-size:12px;margin:0 0 16px;font-weight:750}
+.city-stats .stats-row{display:grid;grid-template-columns:repeat(3,1fr)}
+.city-stats .stats-row div{padding:0 8px;border-right:1px solid #ffffff1a}.city-stats .stats-row div:first-child{padding-left:0}.city-stats .stats-row div:last-child{border:0}
+.city-stats strong{display:block;font-size:20px;color:#fff}.city-stats small{font-size:10px;color:#9eacc7}
+.city-activity p{margin:0!important;padding:10px 0;border-top:1px solid #ffffff12;font-size:11px!important}.city-activity p:first-of-type{border-top:0}
+.city-activity span{color:#e9b575}
+.lb{border-radius:14px!important;padding:9px 13px 9px 8px!important;background:rgba(5,11,27,.76)!important;border:1px solid #e8a75a66!important;box-shadow:0 6px 24px #0005;max-width:180px;white-space:normal;transition:border-color .2s,background .2s}
+.lb:hover,.lb.on{background:rgba(34,24,20,.95)!important;border-color:#f2bd75!important}
+.lb b{background:#e8a75a25!important;color:#e8a75a!important;border:1px solid #e8a75a88;border-radius:9px!important;width:30px!important;height:30px!important;flex-shrink:0}
+.lb span{font-size:12px!important}.lb small{margin-top:3px;font-size:10px!important;color:#b1b8ca!important}
+#pn{background:#080f22f2;border-color:#d39c5e88;box-shadow:0 18px 60px #0008}
+@media(min-width:1050px){#c{left:280px;width:calc(100% - 280px)}}
+@media(max-width:1050px){header{grid-template-columns:1fr auto;height:auto;min-height:78px}header .bar{grid-column:1/-1;justify-content:flex-start}#hero{top:120px;width:280px;padding:24px 18px}#hero h1{font-size:30px}.city-stats,.city-activity{margin-top:16px}}
+@media(max-width:720px){header{padding:10px 12px;display:flex;gap:8px;justify-content:space-between}header>div:first-child{padding-left:44px}header>div:first-child:before{width:36px;height:36px;font-size:14px}header b{font-size:11px}header small{font-size:9px}.bar{width:100%;overflow-x:auto;flex-wrap:nowrap!important}.bar button{white-space:nowrap;padding:7px 10px!important}#hero{display:none}.lb{max-width:110px;padding:5px!important}.lb span{font-size:10px!important}.lb small{font-size:9px!important}#pn{top:auto}}
+@media(prefers-reduced-motion:reduce){.lb{transition:none}}
+</style><style>
+.city-stats .stats-row{grid-template-columns:repeat(4,minmax(0,1fr))}
+.city-stats .stats-row div{padding:0 5px;min-width:0}
+.city-stats strong{font-size:18px}
+.city-stats small{font-size:9px;line-height:1.25;display:block}
+.city-activity p{display:flex;justify-content:space-between;gap:9px;align-items:baseline}
+.city-activity p small{font-size:9px;color:#9daec7;text-align:right;flex-shrink:0}
+@media(max-width:1050px){.city-stats .stats-row{grid-template-columns:repeat(2,1fr);gap:15px}.city-stats .stats-row div:nth-child(2){border:0}}
+</style><style>
+/* Corrige a emenda entre cabeçalho, painel lateral e cena WebGL. */
+header{background:#050a19!important;border-bottom:1px solid rgba(255,255,255,.08)}
+#hero{background:#050a19!important;scrollbar-width:none}
+#hero::-webkit-scrollbar{display:none}
+@media(min-width:1051px){header{grid-template-columns:321px minmax(0,1fr) auto}#c{left:345px;width:calc(100% - 345px)}}
+@media(max-width:1050px){header{background:#050a19!important}}
+</style><style>
+.city-activity{padding:18px 16px 10px}
+.city-activity h3{margin:0 0 12px;font-size:13px;letter-spacing:-.01em}
+.city-activity .activity-list{display:flex;flex-direction:column}
+.city-activity .activity-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:12px;padding:13px 0;border-top:1px solid rgba(255,255,255,.1)}
+.city-activity .activity-item:first-child{border-top:0}
+.city-activity .activity-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+.city-activity .activity-main strong{font-size:12px;font-weight:700;color:#f0b36c;line-height:1.35}
+.city-activity .activity-main span{font-size:11px;color:#b6c0d2;line-height:1.4}
+.city-activity .activity-item>small{font-size:10px;color:#aebad0;line-height:1.3;text-align:right;max-width:102px}
+@media(max-width:1050px){.city-activity .activity-item{grid-template-columns:minmax(0,1fr)}.city-activity .activity-item>small{text-align:left;margin-top:5px;max-width:none;color:#e3aa68}}
+</style><style>
+/* Dia/noite: etiquetas legíveis independentemente da paleta do documento */
+.lb,.lb span{color:#f5f1e9!important}
+.lb small{color:#c6cfe0!important}
+.lb b{color:#f2bd75!important}
+body[data-m=d] .lb{background:rgba(9,16,34,.91)!important;border-color:rgba(216,157,88,.9)!important;box-shadow:0 8px 22px rgba(6,15,29,.32)}
+body[data-m=d] .lb span{color:#fff7eb!important}
+body[data-m=d] .lb small{color:#d4deed!important}
+body[data-m=d] .lb b{color:#ffcf91!important}
+body[data-m=d] #hero,body[data-m=d] header{color:#f4efe4!important}
+body[data-m=d] #hero h1,body[data-m=d] header b{color:#fff5e7!important}
+body[data-m=d] #hero p{color:#c6cede!important}
+body[data-m=d] .city-stats,body[data-m=d] .city-activity{color:#f4efe4!important}
+body[data-m=d] .city-stats h3,body[data-m=d] .city-activity h3{color:#f4efe4!important}
+body[data-m=d] .city-stats strong{color:#fff!important}
+body[data-m=d] .city-activity .activity-main span{color:#c6cfe0!important}
+body[data-m=d] .city-activity .activity-item>small{color:#b9c7dd!important}
+body[data-m=d] #pn{color:#f4efe4!important}
+body[data-m=d] #pn #d{color:#c4cde0!important}
+body[data-m=d] #pn h2{color:#fff4e5!important}
+body[data-m=d] header button,body[data-m=d] #hero button{color:#f4efe4!important}
+</style><style>
+/* Tema diurno: manter o chrome da interface escuro e legível, independente do cenário. */
+body[data-m=d]{--tx:#f4efe4;--mu:#b9c6dc;--pn:rgba(6,11,25,.93);--ln:rgba(255,255,255,.19)}
+body[data-m=d] header,body[data-m=d] #hero{background:#050a19!important;color:#f4efe4!important}
+body[data-m=d] header b,body[data-m=d] header small,body[data-m=d] #hero h1,body[data-m=d] #hero h1 em,body[data-m=d] #hero:before,body[data-m=d] #hero p,body[data-m=d] #hero button,body[data-m=d] .city-stats h3,body[data-m=d] .city-activity h3{color:inherit}
+body[data-m=d] #hero h1 em,body[data-m=d] #hero:before{color:#e8a75a!important}
+body[data-m=d] header b,body[data-m=d] #hero h1,body[data-m=d] #hero #go,body[data-m=d] .city-stats h3,body[data-m=d] .city-activity h3{color:#f4efe4!important}
+body[data-m=d] header small,body[data-m=d] #hero p{color:#b9c6dc!important}
+body[data-m=d] #hero #go{background:transparent!important;border-color:#e8a75a!important}
+body[data-m=d] header .bar button{color:#f4efe4!important}
+body[data-m=d] header .bar button[aria-pressed=true]{background:#a36d38!important;color:#fff!important}
+body[data-m=d] .city-stats,body[data-m=d] .city-activity{background:#081126!important}
+body[data-m=d] .city-stats strong{color:#fff!important}
+body[data-m=d] .city-activity .activity-main strong{color:#f0b36c!important}
+body[data-m=d] .city-activity .activity-main span{color:#c5cfe1!important}
+body[data-m=d] .city-activity .activity-item>small{color:#c5cfe1!important}
+#hero{scrollbar-width:none!important}#hero::-webkit-scrollbar{display:none!important}
+.city-stats .stats-row{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important}
+.city-stats .stats-row div{padding:0 6px!important;border-right:1px solid #ffffff1a!important}
+.city-stats .stats-row div:first-child{padding-left:0!important}
+.city-stats .stats-row div:last-child{border-right:0!important}
+.city-stats .stats-row strong{font-size:19px!important}
+.city-stats .stats-row small{font-size:9px!important;overflow-wrap:normal;line-height:1.4!important}
+.city-activity .activity-item{display:block!important;padding:12px 0!important}
+.city-activity .activity-main{display:flex!important;flex-direction:row!important;justify-content:space-between;gap:12px;align-items:baseline}
+.city-activity .activity-main strong{flex-shrink:0}
+.city-activity .activity-main span{font-size:11px!important;text-align:right}
+.city-activity .activity-item>small{display:block;text-align:right!important;max-width:none!important;margin-top:4px;font-size:10px!important}
+@media(min-width:1051px){header{grid-template-columns:321px minmax(0,1fr) auto!important}}
+@media(max-width:1050px){.city-stats .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:12px!important}.city-stats .stats-row div:nth-child(2){border-right:0!important}}
+</style><style>
+/* Cabeçalho em três zonas, seguindo a hierarquia da referência. */
+.site-header{position:fixed!important;top:0;left:0;right:0;height:82px!important;min-height:82px!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(260px,1fr) auto minmax(260px,1fr)!important;gap:20px!important;align-items:center!important;padding:12px 24px!important;background:linear-gradient(180deg,#050a19 0%,rgba(5,10,25,.94) 75%,rgba(5,10,25,.85) 100%)!important;z-index:5}
+.site-header .site-brand{padding-left:64px;display:flex;flex-direction:column;justify-content:center;min-height:48px;position:relative}
+.site-header .site-brand:before{content:'HD';position:absolute;left:0;top:0;width:48px;height:48px;display:grid;place-items:center;border:2px solid #e8a75a;border-radius:50%;background:radial-gradient(circle at 30% 25%,#9b6538,#151b30 70%);font:700 19px Georgia,serif;color:#f9e2bd;box-shadow:0 0 0 4px #ffffff10}
+.site-header .site-brand b{color:#f4efe4!important;font-size:15px;letter-spacing:.1em}
+.site-header .site-brand small{color:#9ba7c0!important;font-size:11px;margin:4px 0 0}
+.site-tabs{display:flex;gap:4px;padding:5px;background:#070d20;border:1px solid #ffffff22;border-radius:40px}
+.site-tabs button{border:0!important;background:transparent!important;color:#aab4c9!important;border-radius:30px!important;padding:9px 20px!important;font-weight:700;font-size:13px}
+.site-tabs button[aria-current=page]{background:linear-gradient(120deg,#9b6538,#d3964c)!important;color:#fff!important}
+.site-links{display:flex;gap:9px;justify-content:flex-end}
+.site-links button{border:1px solid #ffffff26!important;border-radius:24px!important;background:#070d20bd!important;color:#d4d9e7!important;padding:9px 15px!important;font-size:12px;font-weight:700;letter-spacing:.02em}
+.scene-tools{position:fixed!important;top:94px;right:22px;left:auto;z-index:4;display:flex!important;justify-content:flex-end;gap:6px;background:#070d20d9;border:1px solid #ffffff1e;border-radius:30px;padding:5px;backdrop-filter:blur(12px)}
+.scene-tools button{padding:7px 11px!important;border-radius:22px!important;font-size:12px!important}
+#hero{top:82px!important}
+@media(max-width:1000px){.site-header{grid-template-columns:1fr auto!important;gap:8px!important}.site-tabs{grid-column:2;grid-row:1}.site-links{display:none}.scene-tools{top:91px;right:10px;max-width:calc(100vw - 20px);overflow-x:auto}}
+@media(max-width:650px){.site-header{height:72px!important;min-height:72px!important;padding:9px 12px!important;grid-template-columns:minmax(0,1fr) auto!important}.site-header .site-brand{padding-left:45px!important;min-height:38px}.site-header .site-brand:before{width:36px;height:36px;font-size:14px}.site-header .site-brand b{font-size:11px}.site-header .site-brand small{font-size:9px}.site-tabs{padding:3px}.site-tabs button{font-size:11px;padding:7px 10px!important}.scene-tools{top:80px;right:8px}.scene-tools button{font-size:11px!important;padding:6px 8px!important}#hero{top:72px!important}}
+</style><style>
+/* Etiquetas compactas para não encobrir as edificações vizinhas */
+.lb{width:158px!important;max-width:158px!important;box-sizing:border-box!important;padding:7px 8px!important;gap:6px!important}
+.lb span{font-size:11px!important;line-height:1.2!important;overflow-wrap:anywhere}
+.lb small{font-size:9px!important;line-height:1.2!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal}
+.lb b{width:26px!important;height:26px!important;font-size:11px!important}
+@media(max-width:720px){.lb{width:122px!important;max-width:122px!important;padding:5px!important}.lb span{font-size:10px!important}.lb b{width:22px!important;height:22px!important}}
+</style><style>.site-header .site-brand:before{display:none!important}.site-header .brand-portrait{position:absolute;left:0;top:0;width:48px;height:48px;box-sizing:content-box;border:2px solid #e8a75a;border-radius:50%;object-fit:cover}.folio-photo img{object-position:center 35%}@media(max-width:650px){.site-header .brand-portrait{width:36px;height:36px}}</style><style>@media(max-width:720px){#lbs .lb{width:38px!important;height:38px!important;max-width:38px!important;padding:0!important;border-radius:50%!important;justify-content:center!important;box-shadow:0 3px 10px #0005!important}#lbs .lb span{display:none!important}#lbs .lb b{width:100%!important;height:100%!important;border:0!important;border-radius:50%!important;font-size:15px!important;background:transparent!important}}</style></head>
+<body data-m="n">
+<canvas id="c" role="img" aria-label="Cidade 3D interativa com os nove projetos"></canvas>
+<header class="site-header"><div class="site-brand"><img class="brand-portrait" src="../experimento-3d/perfil.png" alt="" width="48" height="48"><b>HIGOR DORNELAS</b><small>Portfólio da cidade</small></div><nav class="site-tabs" aria-label="Visualizações"><button id="citytab" aria-current="page">Cidade</button><button id="projectstab">Projetos</button></nav><nav class="site-links" aria-label="Páginas"><button id="abouttab">SOBRE</button><button id="contacttab">CONTATO</button></nav></header><div class="bar scene-tools" aria-label="Controles da cidade"><button id="bd">☀ Dia</button><button id="bn">☾ Noite</button><button id="zo" aria-label="Diminuir zoom">−</button><button id="zi" aria-label="Aumentar zoom">+</button><button id="hm">Visão geral</button><button id="nm" aria-pressed="true">Nomes</button></div>
+<section id="hero"><h1>Explore meus <em>projetos.</em></h1><p>Cada edifício representa algo que criei, desenvolvi ou estou construindo. Explore a cidade e conheça os projetos.</p><button id="go">Explorar a Agadê</button><div class="city-stats"><h3>Resumo da cidade <span style="float:right;color:#65d9a0">● Atualizado</span></h3><div class="stats-row"><div><strong>09</strong><small>Projetos</small></div><div><strong>07</strong><small>Desenvolvidos</small></div><div><strong>01</strong><small>Em construção</small></div><div><strong>01</strong><small>Planejado</small></div></div></div><div class="city-activity"><h3>Em destaque</h3><div class="activity-list"><div class="activity-item"><div class="activity-main"><strong>Agadê</strong><span>Marca de óculos</span></div><small>Em desenvolvimento</small></div><div class="activity-item"><div class="activity-main"><strong>Lumear</strong><span>Arquitetura e construção</span></div><small>Em construção</small></div><div class="activity-item"><div class="activity-main"><strong>Pastelaria PDV</strong><span>Projeto futuro</span></div><small>Planejado</small></div></div></div></section>
+<div id="lbs"></div>
+<aside id="pn" hidden aria-live="polite"><button id="x" aria-label="Fechar">×</button><p id="k"></p><h2 id="h"></h2><p id="d"></p><div id="ch"></div><div id="ln"></div><div class="nv"><button id="pv">← Anterior</button><button id="nx">Próximo →</button></div></aside>
+<div id="folio" hidden aria-label="Portfólio completo">
+<div class="folio-top"><a href="#sobre" class="folio-brand" data-folio-target="sobre">HIGOR <em>DORNELAS</em> / PORTFÓLIO</a><nav class="folio-nav" aria-label="Navegação do portfólio"><button data-folio-target="cidade">← Cidade 3D</button><button data-folio-target="sobre">Sobre</button><button data-folio-target="trajetoria">Trajetória</button><button data-folio-target="habilidades">Habilidades</button><button data-folio-target="projetos">Projetos</button><button data-folio-target="contato">Contato</button></nav></div>
+<div class="folio-content">
+<section class="folio-section folio-intro" id="sobre"><div><p class="folio-eyebrow">01 / A pessoa por trás dos projetos</p><h2>Entre o espaço e o <i style="color:#f2a84b">código.</i></h2><p class="folio-lead">Sou Higor Dornelas. Estudo Arquitetura e Urbanismo e desenvolvo soluções digitais que conectam design, dados, tecnologia e negócios. Gosto de transformar ideias em experiências que possam ser construídas, exploradas e utilizadas.</p><div class="folio-chips"><span>Arquitetura & Urbanismo</span><span>Desenvolvimento web</span><span>Dados & automação</span><span>Design de produto</span></div><div class="folio-actions"><button data-folio-target="projetos">Conhecer meus projetos ↗</button><a class="ghost" href="https://github.com/higordrnls" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><figure class="folio-photo"><img src="../experimento-3d/perfil.png" alt="Retrato de Higor Dornelas" width="400" height="400"><figcaption>Higor Dornelas</figcaption></figure></section>
+<section class="folio-section" id="trajetoria"><p class="folio-eyebrow">02 / Trajetória</p><h2>Experiência em operação, criação e tecnologia.</h2><div class="folio-timeline"><article><small>2025 — atual</small><h3>Analista de Operações e Dados · Click Fishing</h3><p>Operação de e-commerce, catálogo, integrações, indicadores, marketplaces e melhoria de processos.</p></article><article><small>2023 — 2025</small><h3>Estoque, expedição e administração · Comercial Santo Antônio</h3><p>Gestão de rotinas operacionais, organização de processos e suporte administrativo.</p></article><article><small>2022 — 2023</small><h3>Trainee · Paiva e Bispo Arquitetura</h3><p>Vivência profissional em projetos e processos de arquitetura.</p></article><article><small>Formação em andamento</small><h3>Arquitetura e Urbanismo</h3><p>Projetos arquitetônicos, interiores, representação técnica e pesquisa sobre habitação e cidade.</p></article></div></section>
+<section class="folio-section" id="habilidades"><p class="folio-eyebrow">03 / Ferramentas & repertórios</p><h2>Uma prática que atravessa disciplinas.</h2><div class="folio-split"><div class="folio-block"><h3>Desenvolvimento</h3><p>React · TypeScript · JavaScript · HTML · CSS · Vite · Node.js · Python · APIs · Git · GitHub</p></div><div class="folio-block"><h3>Dados e operações</h3><p>Power BI · DAX · SQL · automação · análise comercial · processos · e-commerce</p></div><div class="folio-block"><h3>Arquitetura</h3><p>Projeto arquitetônico · interiores · paisagismo · representação técnica · estudos urbanos</p></div><div class="folio-block"><h3>Criação & produto</h3><p>Identidade de marca · prototipagem · fabricação digital · experiência de usuário · empreendedorismo</p></div></div></section>
+<section class="folio-section" id="projetos"><p class="folio-eyebrow">04 / Portfólio selecionado</p><h2>Nove projetos, nove maneiras de criar.</h2><p class="folio-lead">Os mesmos edifícios da cidade, agora com descrições completas, repositórios e links para experiências publicadas.</p><div class="folio-grid"><article class="folio-card"><div class="folio-card-head"><span>01 / 09</span><span>DESENVOLVIDO</span></div><h3>Dashboard Vendas Power BI</h3><p class="folio-sub">Inteligência de negócios · Power BI / DAX</p><p>Uma análise comercial baseada em dados reais de operação: R$ 214.262 em faturamento, 7.924 unidades vendidas e indicadores de ticket médio, evolução das vendas e desempenho por produto. A visualização transforma números dispersos em decisões práticas.</p><div class="folio-card-links"><a href="https://github.com/higordrnls/Dashboard-Vendas-PowerBI" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>02 / 09</span><span>DESENVOLVIDO</span></div><h3>Kanban Financeiro</h3><p class="folio-sub">Gestão financeira · JavaScript</p><p>Uma interface visual para organizar receitas e despesas em cartões, acompanhar períodos e calcular saldos automaticamente. Desenvolvido com HTML, CSS e JavaScript, incluindo persistência local e alternância de tema.</p><div class="folio-card-links"><a href="https://higordrnls.github.io/Kanban-Financeiro/" target="_blank" rel="noopener noreferrer">Abrir projeto ↗</a><a href="https://github.com/higordrnls/Kanban-Financeiro" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>03 / 09</span><span>DESENVOLVIDO</span></div><h3>ArchDaily Pipeline Creator</h3><p class="folio-sub">Arquitetura encontra automação · Angular / Python</p><p>Portal full stack que reúne notícias recentes de arquitetura por meio de scraping com Python e BeautifulSoup. Um frontend Angular consome uma API serverless hospedada na Vercel, aproximando pesquisa arquitetônica e desenvolvimento web.</p><div class="folio-card-links"><a href="https://arch-daily-pipeline-creator.vercel.app/" target="_blank" rel="noopener noreferrer">Abrir projeto ↗</a><a href="https://github.com/higordrnls/ArchDaily-Pipeline-Creator" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>04 / 09</span><span>DESENVOLVIDO</span></div><h3>Retro Game Y2K</h3><p class="folio-sub">Experimento em jogos · Rust / Bevy / WASM</p><p>Um experimento de desenvolvimento de jogos com Rust e Bevy, explorando mecânicas, renderização e execução no navegador por WebAssembly. Representa a expansão do portfólio para além de aplicações web convencionais.</p><div class="folio-card-links"><a href="https://higordrnls.github.io/retro-game-2000/" target="_blank" rel="noopener noreferrer">Jogar ↗</a><a href="https://github.com/higordrnls/retro-game-2000" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>05 / 09</span><span>DESENVOLVIDO</span></div><h3>Hevy AI Automator</h3><p class="folio-sub">Automação de treinos · TypeScript / Playwright</p><p>Motor de automação que converte treinos estruturados em rotinas configuradas no Hevy. Usa validação de dados com Zod e automação de navegador com Playwright para reduzir tarefas repetitivas de cadastro de exercícios, séries e intervalos.</p><div class="folio-card-links"><a href="https://github.com/higordrnls/hevy-ai-automator" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>06 / 09</span><span>DESENVOLVIDO</span></div><h3>Distributed Wagering Processor</h3><p class="folio-sub">Engenharia backend · Bun / NestJS / PostgreSQL</p><p>Processador distribuído de operações de carteira virtual com idempotência, concorrência controlada, ledger e mensageria. No mesmo repositório, o Tigrinho de Mentirinha demonstra uma experiência jogável com backend serverless e saldo persistido.</p><div class="folio-card-links"><a href="https://distributed-wagering-processor.pages.dev/" target="_blank" rel="noopener noreferrer">Abrir projeto ↗</a><a href="https://github.com/higordrnls/distributed-wagering-processor" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>07 / 09</span><span>DESENVOLVIDO</span></div><h3>Agadê</h3><p class="folio-sub">Design autoral · Produto / Marca / Tecnologia</p><p>Uma marca conceitual de óculos que investiga fabricação digital, linguagem de produto e circularidade. O projeto reúne branding, documentação de produto, protótipos e uma experiência digital de catálogo. É o edifício central desta cidade por representar uma ideia cultivada há anos.</p><div class="folio-card-links"><a href="https://agade.vercel.app/" target="_blank" rel="noopener noreferrer">Abrir projeto ↗</a><a href="https://github.com/higordrnls/agade" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>08 / 09</span><span>EM CONSTRUÇÃO</span></div><h3>Lumear</h3><p class="folio-sub">Arquitetura e construção · Em desenvolvimento</p><p>Conceito de escritório e construtora que articula projeto arquitetônico, bem-estar ambiental e diferentes repertórios culturais. O canteiro representa um empreendimento em desenvolvimento: sua arquitetura, serviços e identidade ainda estão sendo construídos.</p><div class="folio-card-links"><a href="https://github.com/higordrnls/lumear" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></article><article class="folio-card"><div class="folio-card-head"><span>09 / 09</span><span>EM PLANEJAMENTO</span></div><h3>Pastelaria PDV</h3><p class="folio-sub">Varejo e memória afetiva · Projeto futuro</p><p>Lote reservado para uma futura aplicação de ponto de venda de pastelaria, conectando gestão de pedidos, caixa e operação comercial a um projeto de negócio inspirado em receitas de família. Ainda não existe repositório público.</p><div class="folio-card-links"><span>Projeto futuro</span></div></article></div></section>
+<section class="folio-section" id="contato"><p class="folio-eyebrow">05 / Contato</p><h2>Vamos construir alguma coisa?</h2><p class="folio-lead">Tenho interesse em projetos que conectem tecnologia, arquitetura, dados e criação. Se você quer conversar sobre uma ideia, colaboração ou oportunidade, podemos começar por aqui.</p><div class="folio-actions"><a href="https://github.com/higordrnls" target="_blank" rel="noopener noreferrer">Meu GitHub ↗</a><button class="ghost" data-folio-target="cidade">Voltar à cidade ↗</button></div><div class="folio-actions" style="margin-top:18px"><a href="mailto:higordrnls02@gmail.com">E-mail ↗</a><a href="https://wa.me/5534998188739" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="https://www.linkedin.com/in/hdornelas" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></section><footer class="folio-foot"><span>© 2026 Higor Dornelas · Arquitetura de ideias.</span><span>Feito para explorar, criar e construir.</span></footer></div></div><div id="err" hidden>Não foi possível iniciar o WebGL neste navegador.</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=>{
+const folio=document.getElementById('folio');
+const showFolio=(section='sobre')=>{folio.hidden=false;document.getElementById('pn').hidden=true;document.getElementById('hero').hidden=true;document.getElementById('lbs').hidden=true;document.getElementById('c').style.visibility='hidden';document.getElementById(section)?.scrollIntoView({block:'start'});};
+const showCity=()=>{folio.hidden=true;document.getElementById('c').style.visibility='visible';document.getElementById('lbs').hidden=document.getElementById('nm').getAttribute('aria-pressed')!=='true';document.getElementById('hero').hidden=false;};
+document.getElementById('projectstab').addEventListener('click',()=>showFolio('projetos'));
+document.getElementById('abouttab').addEventListener('click',()=>showFolio('sobre'));
+document.getElementById('contacttab').addEventListener('click',()=>showFolio('contato'));
+document.getElementById('citytab').addEventListener('click',()=>showCity());
+document.querySelectorAll('[data-folio-target]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const t=el.getAttribute('data-folio-target');if(t==='cidade')showCity();else showFolio(t)}));
+if(typeof THREE==='undefined'){showFolio('projetos');return;}
+const T3=THREE,$=s=>document.querySelector(s),RM=matchMedia('(prefers-reduced-motion:reduce)').matches,lite=matchMedia('(pointer:coarse)').matches;
+let sd=11;const R=()=>(sd=sd*16807%2147483647)/2147483647,D=Math.PI/180,s2=Math.SQRT1_2;
+const P=[{"n":"Dashboard Vendas Power BI","s":"Inteligência de negócios · Power BI / DAX","d":"Uma análise comercial baseada em dados reais de operação: R$ 214.262 em faturamento, 7.924 unidades vendidas e indicadores de ticket médio, evolução das vendas e desempenho por produto. A visualização transforma números dispersos em decisões práticas.","p":[-17,9],"y":11,"t":["Projeto desenvolvido"],"l":[["GitHub","https://github.com/higordrnls/Dashboard-Vendas-PowerBI"]]},{"n":"Kanban Financeiro","s":"Gestão financeira · JavaScript","d":"Uma interface visual para organizar receitas e despesas em cartões, acompanhar períodos e calcular saldos automaticamente. Desenvolvido com HTML, CSS e JavaScript, incluindo persistência local e alternância de tema.","p":[-19,-5],"y":10,"t":["Projeto desenvolvido"],"l":[["Acessar projeto","https://higordrnls.github.io/Kanban-Financeiro/"],["GitHub","https://github.com/higordrnls/Kanban-Financeiro"]]},{"n":"ArchDaily Pipeline Creator","s":"Arquitetura encontra automação · Angular / Python","d":"Portal full stack que reúne notícias recentes de arquitetura por meio de scraping com Python e BeautifulSoup. Um frontend Angular consome uma API serverless hospedada na Vercel, aproximando pesquisa arquitetônica e desenvolvimento web.","p":[-8,-17],"y":7,"t":["Projeto desenvolvido"],"l":[["Acessar projeto","https://arch-daily-pipeline-creator.vercel.app/"],["GitHub","https://github.com/higordrnls/ArchDaily-Pipeline-Creator"]]},{"n":"Retro Game Y2K","s":"Experimento em jogos · Rust / Bevy / WASM","d":"Um experimento de desenvolvimento de jogos com Rust e Bevy, explorando mecânicas, renderização e execução no navegador por WebAssembly. Representa a expansão do portfólio para além de aplicações web convencionais.","p":[6,-20],"y":6.5,"t":["Projeto desenvolvido"],"l":[["Acessar projeto","https://higordrnls.github.io/retro-game-2000/"],["GitHub","https://github.com/higordrnls/retro-game-2000"]]},{"n":"Hevy AI Automator","s":"Automação de treinos · TypeScript / Playwright","d":"Motor de automação que converte treinos estruturados em rotinas configuradas no Hevy. Usa validação de dados com Zod e automação de navegador com Playwright para reduzir tarefas repetitivas de cadastro de exercícios, séries e intervalos.","p":[18,-14],"y":12.5,"t":["Projeto desenvolvido"],"l":[["GitHub","https://github.com/higordrnls/hevy-ai-automator"]]},{"n":"Distributed Wagering Processor","s":"Engenharia backend · Bun / NestJS / PostgreSQL","d":"Processador distribuído de operações de carteira virtual com idempotência, concorrência controlada, ledger e mensageria. No mesmo repositório, o Tigrinho de Mentirinha demonstra uma experiência jogável com backend serverless e saldo persistido.","p":[23,0],"y":5.5,"t":["Projeto desenvolvido"],"l":[["Acessar projeto","https://distributed-wagering-processor.pages.dev/"],["GitHub","https://github.com/higordrnls/distributed-wagering-processor"]]},{"n":"Agadê","s":"Design autoral · Produto / Marca / Tecnologia","d":"Uma marca conceitual de óculos que investiga fabricação digital, linguagem de produto e circularidade. O projeto reúne branding, documentação de produto, protótipos e uma experiência digital de catálogo. É o edifício central desta cidade por representar uma ideia cultivada há anos.","p":[0,0],"y":7.5,"t":["Projeto desenvolvido"],"l":[["Acessar projeto","https://agade.vercel.app/"],["GitHub","https://github.com/higordrnls/agade"]]},{"n":"Lumear","s":"Arquitetura e construção · Em desenvolvimento","d":"Conceito de escritório e construtora que articula projeto arquitetônico, bem-estar ambiental e diferentes repertórios culturais. O canteiro representa um empreendimento em desenvolvimento: sua arquitetura, serviços e identidade ainda estão sendo construídos.","p":[17,14],"y":9,"t":["Em construção"],"l":[["GitHub","https://github.com/higordrnls/lumear"]]},{"n":"Pastelaria PDV","s":"Varejo e memória afetiva · Projeto futuro","d":"Lote reservado para uma futura aplicação de ponto de venda de pastelaria, conectando gestão de pedidos, caixa e operação comercial a um projeto de negócio inspirado em receitas de família. Ainda não existe repositório público.","p":[3,21],"y":4,"t":["Planejado"],"l":[]}];
+
+let rd;try{rd=new T3.WebGLRenderer({canvas:$('#c'),antialias:true})}catch(e){showFolio('projetos');return}
+rd.setPixelRatio(Math.min(devicePixelRatio,2));rd.outputEncoding=T3.sRGBEncoding;rd.toneMapping=T3.ACESFilmicToneMapping;rd.toneMappingExposure=1.0;rd.shadowMap.enabled=true;rd.shadowMap.type=T3.PCFSoftShadowMap;
+const sc=new T3.Scene(),H=19,cam=new T3.OrthographicCamera(-1,1,1,-1,1,400);sc.fog=new T3.Fog('#070b16',70,190);
+const hemi=new T3.HemisphereLight(0xffffff,0x222233,.8),sun=new T3.DirectionalLight(0xffffff,1);sc.add(hemi,sun);
+sun.castShadow=true;sun.shadow.mapSize.set(lite?1024:2048,lite?1024:2048);Object.assign(sun.shadow.camera,{left:-46,right:46,top:46,bottom:-46,near:1,far:200});sun.shadow.bias=-.0006;sun.shadow.normalBias=.025;
+const ALL=[],cv=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h}),
+tx=c=>{const t=new T3.CanvasTexture(c);t.encoding=T3.sRGBEncoding;t.anisotropy=4;return t},
+S=(c,r=.8)=>new T3.MeshStandardMaterial({color:c,roughness:r}),
+G=(c,g=1)=>{const m=new T3.MeshStandardMaterial({color:c,emissive:c,roughness:.5});m.userData={t:'g',g};ALL.push(m);return m},
+fac=(c,r,wall,win,lit,fn)=>{const a=cv(256,256),b=cv(256,256),x=a.getContext('2d'),y=b.getContext('2d');x.fillStyle=wall;x.fillRect(0,0,256,256);y.fillStyle='#000';y.fillRect(0,0,256,256);
+for(let i=0;i<c;i++)for(let j=0;j<r;j++){const p=(i+.18)*256/c,q=(j+.2)*256/r,w=.64*256/c,h=.6*256/r;x.fillStyle=win;x.fillRect(p,q,w,h);if(R()<.82){y.fillStyle=fn?fn(i,j):lit;y.fillRect(p,q,w,h)}}
+const m=new T3.MeshStandardMaterial({map:tx(a),emissive:0xffffff,emissiveMap:tx(b),roughness:.7,metalness:.1});m.userData={t:'w'};ALL.push(m);return m},
+sign=(t1,t2,w,h,bg,fg,f)=>{const a=cv(512,Math.round(512*h/w)),x=a.getContext('2d');x.fillStyle=bg;x.fillRect(0,0,a.width,a.height);x.fillStyle=fg;x.textAlign='center';x.textBaseline='middle';if(x.letterSpacing)x.letterSpacing=t2?'0px':'14px';
+x.font=`700 ${a.height*(t2?.34:.55)}px ${f}`;x.fillText(t1,256,a.height*(t2?.36:.5));if(t2){x.font=`600 ${a.height*.2}px system-ui,sans-serif`;x.fillText(t2,256,a.height*.76)}
+const m=new T3.MeshStandardMaterial({map:tx(a),emissive:0xffffff,emissiveMap:tx(a),roughness:.6});m.userData={t:'g',g:.45};ALL.push(m);return new T3.Mesh(new T3.PlaneGeometry(w,h),m)},
+add=(g,geo,m,x,y,z,sh=true)=>{const o=new T3.Mesh(geo,m);o.position.set(x,y,z);o.castShadow=o.receiveShadow=sh;g.add(o);return o},
+bx=(g,w,h,d,x,y,z,m,r)=>add(g,new T3.BoxGeometry(w,h,d),r?[m,m,r,r,m,m]:m,x,y+h/2,z),
+cy=(g,a,b,h,x,y,z,m)=>add(g,new T3.CylinderGeometry(a,b,h,48),m,x,y+h/2,z),
+fl=(geo,m,y)=>{const o=new T3.Mesh(geo,m);o.receiveShadow=true;o.position.y=y;sc.add(o);return o};
+const RF=S('#2a3042',.6),CON=S('#cdbd98'),DK=S('#161b2a'),YL=S('#f2b705',.5),WH=S('#f0ece0'),AS=S('#1c2130',.9),EL=G('#ffb347',.9),HG=[];
+function hero(i,fn){const g=new T3.Group(),a=ALL.length;g.position.set(P[i].p[0],0,P[i].p[1]);g.userData.hi=i;fn(g);P[i].m=ALL.slice(a);sc.add(g);HG.push(g)}
+let spin;
+hero(0,g=>{bx(g,5,10,5,0,0,0,fac(6,14,'#141a2c','#26385c','#fff',(i,j)=>`hsl(${(i*55+j*7)%360},90%,62%)`),RF);bx(g,5.4,.4,5.4,0,10,0,DK);bx(g,.4,1.4,.4,1.5,10.4,1.5,G('#77ccff'))});
+hero(1,g=>{[[-2.4,6],[0,8.5],[2.4,5.2]].forEach(([x,h])=>{bx(g,2.2,h,5,x,0,0,fac(3,Math.round(h*1.6),'#3a2d2a','#6d5236','#ffc76b'),RF);bx(g,2.2,.35,5,x,h,0,S('#2f7a45'))})});
+hero(2,g=>{bx(g,9,5,5,0,0,0,fac(10,5,'#4a5066','#2b3550','#ffe0a0'),RF);bx(g,9.8,.4,5.8,0,5,0,S('#8d93a6'));[-1.5,0,1.5].forEach(z=>{add(g,new T3.CylinderGeometry(.35,.35,8,16),S('#b7bdd0',.4),0,5.9,z).rotation.z=Math.PI/2})});
+hero(3,g=>{bx(g,6.5,4.5,5,0,0,0,fac(7,4,'#24103a','#4a1d70','#ff4fd8',(i,j)=>(i+j)%2?'#ff4fd8':'#38f0ff'),RF);bx(g,6.9,.35,5.4,0,4.5,0,G('#38f0ff',1.2));bx(g,3.4,1.8,.3,0,2,2.6,G('#ff4fd8'))});
+hero(4,g=>{bx(g,4.6,9,4.6,0,0,0,fac(5,12,'#22154a','#3a2a7a','#b58cff'),RF);bx(g,5,.4,5,0,9,0,DK);spin=add(g,new T3.BoxGeometry(1.8,1.8,1.8),G('#b58cff',1.4),0,10.6,0)});
+hero(5,g=>{[-3.4,0,3.4].forEach(z=>bx(g,5.5,4,2.6,0,0,z,fac(2,7,'#0f1b33','#16294a','#38d0ff'),RF));[-1.7,1.7].forEach(z=>bx(g,1.2,1,.8,0,1.6,z,S('#2a3a5a')));bx(g,1.2,.3,1.2,-1.5,4,3.4,G('#44aaff'))});
+hero(6,g=>{const a=cv(256,64),b=cv(256,64),x=a.getContext('2d'),y=b.getContext('2d');y.fillStyle='#000';y.fillRect(0,0,256,64);
+for(let i=0;i<32;i++){x.fillStyle=i%2?'#a2622f':'#c98648';x.fillRect(i*8,0,8,64);x.fillStyle='#2a1a10';x.fillRect(i*8,20,8,28);y.fillStyle='#ffb45a';y.fillRect(i*8+1,22,6,24)}
+const m=new T3.MeshStandardMaterial({map:tx(a),emissive:0xffffff,emissiveMap:tx(b),roughness:.55,metalness:.2});m.userData={t:'w'};ALL.push(m);const c=S('#c98648',.45);
+cy(g,6.9,6.9,.4,0,0,0,S('#8b6a47'));add(g,new T3.CylinderGeometry(6.2,6.2,4.2,64),[m,c,c],0,2.3,0);cy(g,6.7,6.7,.7,0,4.4,0,c);cy(g,5.8,5.8,.5,0,5.1,0,S('#3f8f4a',.9));
+add(g,new T3.TorusGeometry(6.7,.1,8,72),G('#ffbe6b',1.2),0,5.1,0).rotation.x=Math.PI/2;
+for(let i=0;i<7;i++){const a=i*.9,r=2+R()*3;add(g,new T3.IcosahedronGeometry(.7+R()*.4,1),S('#2f7a3f',1),Math.cos(a)*r,6.1,Math.sin(a)*r)}
+const sg=sign('AGADÊ','',6.2,1.5,'#2a170c','#ffb45a','Georgia,serif');sg.position.set(Math.sin(Math.PI/4)*6.4,2.3,Math.cos(Math.PI/4)*6.4);sg.rotation.y=Math.PI/4;g.add(sg)});
+hero(7,g=>{for(let k=0;k<3;k++){bx(g,6,.3,6,0,k*2.5,0,CON);for(const x of[-2.7,0,2.7])for(const z of[-2.7,2.7])bx(g,.3,2.2,.3,x,k*2.5+.3,z,CON)}
+bx(g,.5,13,.5,4.2,0,-4,YL);bx(g,10,.35,.35,.8,13,-4,YL);bx(g,1.4,1,1,5.6,12.2,-4,DK);bx(g,.15,3,.15,-2.5,10,-4,DK);bx(g,.4,.4,.4,-3.9,12.6,-4,G('#fff4c0',2));
+bx(g,7.4,1.6,.2,0,0,3.7,S('#d8cfb8'));const sg=sign('LUMEAR','',4.2,1.1,'#e8dcc0','#1d1a14','Georgia,serif');sg.position.set(0,.85,3.82);g.add(sg)});
+hero(8,g=>{bx(g,9,.15,7,0,0,0,S('#2f7a3d',1));for(let x=-4.5;x<=4.5;x+=1.5)for(const z of[-3.5,3.5])bx(g,.12,1,.12,x,.1,z,WH);for(let z=-3.5;z<=3.5;z+=1.4)for(const x of[-4.5,4.5])bx(g,.12,1,.12,x,.1,z,WH);
+for(const z of[-3.5,3.5])bx(g,9,.08,.08,0,.8,z,WH);for(const x of[-4.5,4.5])bx(g,.08,.08,7,x,.8,0,WH);
+const sg=sign('PASTELARIA PDV','LOTE RESERVADO',3.6,1.3,'#f2ead6','#3a2a18','system-ui,sans-serif');sg.position.set(0,1.45,2.6);g.add(sg);bx(g,.1,.9,.1,-1.3,0,2.58,S('#6b4a2a'));bx(g,.1,.9,.1,1.3,0,2.58,S('#6b4a2a'));
+const e=new T3.LineSegments(new T3.EdgesGeometry(new T3.BoxGeometry(3,2.4,3)),new T3.LineBasicMaterial({color:'#ffb347'}));e.position.set(-1,1.3,-.5);g.add(e)});
+// terreno, água, vias
+const gm=S('#59616f',1),pm=S('#6aa95e',1),wm=new T3.MeshStandardMaterial({color:'#3a86b5',roughness:.25,metalness:.3});
+fl(new T3.PlaneGeometry(900,900).rotateX(-Math.PI/2),gm,0);fl(new T3.CircleGeometry(30.6,96).rotateX(-Math.PI/2),pm,.01);
+const wt=add(sc,new T3.BoxGeometry(400,.3,200),wm,63.64,-.1,63.64,false);wt.rotation.y=Math.PI/4;wt.receiveShadow=true;
+const pr=add(sc,new T3.BoxGeometry(400,.4,2.4),S('#8a8576'),29.3*s2,.2,29.3*s2,false);pr.rotation.y=Math.PI/4;
+const ring=(a,b,m,y)=>fl(new T3.RingGeometry(a,b,128).rotateX(-Math.PI/2),m,y);
+ring(11,14,AS,.03);ring(11,11.15,EL,.04);ring(13.85,14,EL,.04);ring(26.2,28.8,AS,.03);ring(26.2,26.35,EL,.04);ring(28.65,28.8,EL,.04);
+const SP=[20,60,117,173,220,266,304,341].map(d=>d*D);
+SP.forEach(a=>{const g=new T3.Group();g.position.set(Math.cos(a)*20.1,0,Math.sin(a)*20.1);g.rotation.y=-a;add(g,new T3.BoxGeometry(12.4,.06,2.2),AS,0,.03,0,false).receiveShadow=true;[-1.1,1.1].forEach(z=>add(g,new T3.BoxGeometry(12.4,.07,.12),EL,0,.04,z,false));sc.add(g)});
+cy(sc,9.8,9.8,.12,0,0,0,S('#5d584a'));ring(9.8,10,G('#ffbe6b',.8),.14);
+const fo=new T3.Group();fo.position.set(5.8,0,5.8);cy(fo,1.5,1.5,.5,0,0,0,S('#8a8576'));cy(fo,1.2,1.2,.52,0,0,0,G('#59b8ff',.6));
+const jet=add(fo,new T3.ConeGeometry(.35,1.8,10),new T3.MeshBasicMaterial({color:'#bfe8ff',transparent:true,opacity:.65}),0,1.3,0,false);sc.add(fo);
+// tecido urbano
+const fm=fac(6,10,'#ece4d4','#4a5368','#ffd596'),fp=[];
+for(let i=-13;i<=13;i++)for(let j=-13;j<=13;j++){const x=i*7.2,z=j*7.2,r=Math.hypot(x,z);if(r<31||r>88||x+z>40||R()<.07)continue;fp.push([x,z,r])}
+const fb=new T3.InstancedMesh(new T3.BoxGeometry(1,1,1),fm,fp.length),du=new T3.Object3D(),pal=['#e0d3b4','#cdbf9f','#b9ab8f','#a89a85','#ece2c8'].map(c=>new T3.Color(c));
+fp.forEach(([x,z,r],i)=>{const h=2.2+R()*R()*10*(r<55?1:.7),w=4.2+R()*1.2,d=4.2+R()*1.2;du.position.set(x,h/2,z);du.scale.set(w,h,d);du.updateMatrix();fb.setMatrixAt(i,du.matrix);fb.setColorAt(i,pal[Math.floor(R()*5)])});
+fb.castShadow=fb.receiveShadow=true;sc.add(fb);
+// árvores
+const tp=[];for(let n=0;n<5000&&tp.length<230;n++){const a=R()*6.283,r=10.6+R()*20,x=r*Math.cos(a),z=r*Math.sin(a);if(Math.abs(r-12.5)<2.4||Math.abs(r-27.5)<2.6||x+z>40)continue;
+if(P.some((o,i)=>i!==6&&Math.hypot(x-o.p[0],z-o.p[1])<6))continue;if(SP.some(s=>x*Math.cos(s)+z*Math.sin(s)>10&&Math.abs(x*Math.sin(s)-z*Math.cos(s))<2.4))continue;tp.push([x,z])}
+const tc=new T3.InstancedMesh(new T3.IcosahedronGeometry(1,1),new T3.MeshStandardMaterial({roughness:1,flatShading:true}),tp.length),tt=new T3.InstancedMesh(new T3.CylinderGeometry(.12,.18,1.4,6),S('#4a3524'),tp.length),gc=['#2f7a3f','#3f8f4a','#276b3a','#4a9a52'];
+tp.forEach(([x,z],i)=>{const s=.9+R()*.8;du.position.set(x,1.2+s,z);du.scale.set(s,s,s);du.updateMatrix();tc.setMatrixAt(i,du.matrix);tc.setColorAt(i,new T3.Color(R()<.13?'#9b6bd1':gc[Math.floor(R()*4)]));
+du.position.set(x,.7,z);du.scale.set(1,1,1);du.updateMatrix();tt.setMatrixAt(i,du.matrix)});tc.castShadow=tt.castShadow=true;sc.add(tc,tt);
+// postes
+const lp=[];for(let i=0;i<34;i++){const a=i/34*6.283;lp.push([14.45*Math.cos(a),14.45*Math.sin(a)])}for(let i=0;i<56;i++){const a=i/56*6.283;lp.push([29.2*Math.cos(a),29.2*Math.sin(a)])}for(let t=-40;t<=40;t+=5)lp.push([20.7+s2*t,20.7-s2*t]);
+const lb=new T3.InstancedMesh(new T3.SphereGeometry(.22,8,6),G('#ffd9a0',1.6),lp.length),lq=new T3.InstancedMesh(new T3.CylinderGeometry(.05,.05,1.5,5),DK,lp.length);
+lp.forEach(([x,z],i)=>{du.scale.set(1,1,1);du.position.set(x,1.5,z);du.updateMatrix();lb.setMatrixAt(i,du.matrix);du.position.set(x,.75,z);du.updateMatrix();lq.setMatrixAt(i,du.matrix)});sc.add(lb,lq);
+// carros e barco
+const cars=[...Array(16)].map((_,i)=>({r:i<7?12.5+(i%2?.55:-.55):27.5+(i%2?.6:-.6),a:R()*6.28,v:(i%2?1:-1)*(.12+R()*.08)})),
+cm=new T3.InstancedMesh(new T3.BoxGeometry(.95,.38,.5),G('#fff0c8',.7),cars.length);cars.forEach((c,i)=>cm.setColorAt(i,new T3.Color(['#d94b4b','#e8e8f0','#4b8be8','#e8c04b'][i%4])));sc.add(cm);
+const boat=new T3.Group();add(boat,new T3.BoxGeometry(1.8,.35,.6),S('#f4f0e6'),0,.2,0);add(boat,new T3.ConeGeometry(.55,2.4,3),S('#ffffff'),0,1.5,0);boat.position.set(31,0,29);sc.add(boat);
+// estado, câmera
+// Preview: daylight materials independent of night
+const daylightMaps=ALL.filter(m=>m.userData.t==='w'&&m.map).map(m=>{
+ const src=m.map.image,a=cv(src.width,src.height),ctx=a.getContext('2d');ctx.drawImage(src,0,0);
+ const im=ctx.getImageData(0,0,a.width,a.height),d=im.data;
+ for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2],l=(r+g+b)/3;const glass=b>r*1.08&&l<115;
+ if(glass){const f=.8+l/255;d[i]=71*f;d[i+1]=103*f;d[i+2]=120*f;}else{d[i]=r*.83+28;d[i+1]=g*.83+29;d[i+2]=b*.83+30;}}
+ ctx.putImageData(im,0,0);return {m,night:m.map,day:tx(a)};
+});
+const daylightRoof=S('#a9a69c',.94),nightUrban=fb.material;
+const treeNight=tc.instanceColor.array.slice(),treeDay=treeNight.slice();
+for(let i=0;i<treeDay.length;i+=3){const r=treeNight[i],g=treeNight[i+1],b=treeNight[i+2];if(g>r&&g>b){treeDay[i]=r*.77;treeDay[i+1]=g*.72;treeDay[i+2]=b*.67;}}
+let materialMode=null;
+function daylightMaterials(day){if(materialMode===day)return;materialMode=day;
+ daylightMaps.forEach(({m,night,day:map})=>{m.map=day?map:night;m.needsUpdate=true;});
+ fb.material=day?[fm,fm,daylightRoof,daylightRoof,fm,fm]:nightUrban;
+ tc.instanceColor.array.set(day?treeDay:treeNight);tc.instanceColor.needsUpdate=true;
+}
+const T={x:0,z:0},z0=()=>Math.min(1.05,innerWidth/innerHeight*.9),kk=1/(.9/Math.hypot(1,.9,1));
+let k=0,kT=matchMedia('(prefers-color-scheme:light)').matches?0:1,lk=-1,sel=-1,hov=-1,tw=null,prev=null;k=kT;
+const E={bg:['#a8bdca','#070b16'],hs:['#dce6ef','#26335e'],hg:['#353d36','#0a0e1a'],sc:['#fff5e7','#7e92d6'],gr:['#51565c','#10141f'],pk:['#52703b','#12301c'],wa:['#28586b','#0a2145']},
+col=x=>new T3.Color(E[x][0]).lerp(new T3.Color(E[x][1]),k);
+function env(){daylightMaterials(kT===0);wt.position.x=wt.position.z=91.5+(63.64-91.5)*k;sc.background=col('bg');sc.fog.color.copy(sc.background);hemi.color.copy(col('hs'));hemi.groundColor.copy(col('hg'));hemi.intensity=.56+.04*k;rd.toneMappingExposure=.86+.14*k;sc.fog.near=100-30*k;sc.fog.far=240-50*k;sun.color.copy(col('sc'));sun.intensity=1.38-.93*k;sun.position.set(30-50*k,45,-15+40*k);
+gm.color.copy(col('gr'));pm.color.copy(col('pk'));fm.color.setRGB(0.72+0.28*k,0.76+0.24*k,0.82+0.18*k);wm.color.copy(col('wa'));wm.emissive.set('#0a3a80').multiplyScalar(.8*k);document.body.dataset.m=kT?'n':'d';$('#bd').setAttribute('aria-pressed',!kT);$('#bn').setAttribute('aria-pressed',!!kT)}
+function rs(){const w=innerWidth,h=innerHeight,a=w/h;rd.setSize(w,h,false);cam.left=-H*a;cam.right=H*a;cam.top=H;cam.bottom=-H;cam.zoom=cam.zoom||z0();cam.updateProjectionMatrix()}
+cam.zoom=z0();addEventListener('resize',rs);rs();
+const go=(x,z,zm,ms=900)=>{tw={a:[T.x,T.z,cam.zoom],b:[x,z,zm],t:performance.now(),ms:RM?0:ms}},
+clampT=()=>{const l=Math.hypot(T.x,T.z);if(l>26){T.x*=26/l;T.z*=26/l}},
+zb=f=>{cam.zoom=Math.min(3.2,Math.max(.5,cam.zoom*f));cam.updateProjectionMatrix()};
+// rótulos e painel
+const LB=P.map((o,i)=>{const b=document.createElement('button');b.className='lb';b.setAttribute('aria-label',`${i+1}. ${o.n}`);b.title=o.n;b.innerHTML=`<b>${i+1}</b><span>${o.n}<small>${o.s}</small></span>`;b.onclick=()=>{const link=o.l.find(([label])=>/acessar|site|demo/i.test(label))||o.l.find(([label,url])=>!url.includes('github.com/'))||o.l[0];if(link)window.open(link[1],'_blank','noopener,noreferrer');else open(i);};b.onpointerenter=()=>hov=i;b.onpointerleave=()=>hov=-1;$('#lbs').append(b);return b});
+function open(i){if(sel<0)prev={x:T.x,z:T.z,k:cam.zoom};sel=i;const o=P[i];$('#k').textContent=`Projeto ${i+1} de 9 · ${o.s}`;$('#h').textContent=o.n;$('#d').textContent=o.d;
+$('#ch').innerHTML=o.t.map(t=>`<span>${t}</span>`).join('');$('#ln').innerHTML=o.l.length?o.l.map(([a,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${a}</a>`).join(''):'<small>Projeto em planejamento.</small>';
+$('#pn').hidden=false;$('#hero').hidden=true;LB.forEach((b,j)=>b.classList.toggle('on',j===i));
+const z=Math.max(cam.zoom,1.9),u=2*H/z/innerHeight,mob=innerWidth<=720;let x=o.p[0],y=o.p[1];
+if(mob){const d=innerHeight*.2*u*kk*s2;x+=d;y+=d}else{const d=165*u*s2;x+=d;y-=d}go(x,y,z)}
+function close(){if(sel<0)return;sel=-1;$('#pn').hidden=true;$('#hero').hidden=false;LB.forEach(b=>b.classList.remove('on'));go(prev.x,prev.z,prev.k)}
+const home=()=>{if(sel>=0){sel=-1;$('#pn').hidden=true;$('#hero').hidden=false;LB.forEach(b=>b.classList.remove('on'))}go(0,0,z0())},step=d=>open((sel+d+9)%9);
+$('#x').onclick=close;$('#hm').onclick=home;$('#go').onclick=()=>open(6);$('#pv').onclick=()=>step(-1);$('#nx').onclick=()=>step(1);$('#zi').onclick=()=>zb(1.3);$('#zo').onclick=()=>zb(1/1.3);
+$('#bd').onclick=()=>kT=0;$('#bn').onclick=()=>kT=1;$('#nm').onclick=e=>{const v=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',v);$('#lbs').hidden=!v};
+addEventListener('keydown',e=>{if(e.key==='Escape')close();if(sel>=0&&e.key==='ArrowRight')step(1);if(sel>=0&&e.key==='ArrowLeft')step(-1)});
+// ponteiro
+const c=$('#c'),ptr=new Map(),rc=new T3.Raycaster(),v=new T3.Vector2();let drag=0,ld=0;
+const hit=e=>{v.set(e.clientX/innerWidth*2-1,-e.clientY/innerHeight*2+1);rc.setFromCamera(v,cam);const h=rc.intersectObjects(HG,true)[0];if(!h)return-1;let o=h.object;while(o&&o.userData.hi===undefined)o=o.parent;return o?o.userData.hi:-1},
+dist=()=>{const a=[...ptr.values()];return Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1])};
+c.addEventListener('pointerdown',e=>{c.setPointerCapture(e.pointerId);ptr.set(e.pointerId,[e.clientX,e.clientY]);drag=0;tw=null;if(ptr.size===2)ld=dist()});
+c.addEventListener('pointermove',e=>{if(!ptr.has(e.pointerId)){if(!lite){hov=hit(e);c.style.cursor=hov>=0?'pointer':'grab'}return}
+const p=ptr.get(e.pointerId),dx=e.clientX-p[0],dy=e.clientY-p[1];ptr.set(e.pointerId,[e.clientX,e.clientY]);
+if(ptr.size===1){drag+=Math.abs(dx)+Math.abs(dy);const u=2*H/cam.zoom/innerHeight*s2;T.x-=u*(dx+dy*kk);T.z+=u*(dx-dy*kk);clampT()}else if(ptr.size===2){const d=dist();zb(d/ld);ld=d;drag=99}});
+const up=e=>{if(ptr.has(e.pointerId)&&ptr.size===1&&drag<6){const i=hit(e);if(i>=0)open(i)}ptr.delete(e.pointerId)};c.addEventListener('pointerup',up);c.addEventListener('pointercancel',e=>ptr.delete(e.pointerId));
+c.addEventListener('wheel',e=>{e.preventDefault();tw=null;zb(Math.exp(-e.deltaY*.0015))},{passive:false});
+// laço
+const hv=P.map(()=>0),pv3=new T3.Vector3();let t0=performance.now();
+function fr(now){if(!folio.hidden||document.hidden){t0=now;requestAnimationFrame(fr);return;}const dt=Math.min(.05,(now-t0)/1000);t0=now;
+if(tw){const p=tw.ms?Math.min(1,(now-tw.t)/tw.ms):1,e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;T.x=tw.a[0]+(tw.b[0]-tw.a[0])*e;T.z=tw.a[1]+(tw.b[1]-tw.a[1])*e;cam.zoom=tw.a[2]+(tw.b[2]-tw.a[2])*e;cam.updateProjectionMatrix();if(p>=1)tw=null}
+k+=(kT-k)*Math.min(1,dt*(RM?60:3));if(Math.abs(kT-k)<.002)k=kT;if(k!==lk){env();lk=k}
+P.forEach((o,i)=>{hv[i]+=(((hov===i||sel===i)?1:0)-hv[i])*.2;o.m.forEach(m=>m.userData.h=hv[i])});
+for(const m of ALL){const u=m.userData;m.emissiveIntensity=(u.t==='w'?.06+1.14*k:u.g*(.035+1.365*k))*(1+.8*(u.h||0))}
+if(!RM){spin.rotation.y+=dt;spin.rotation.x+=dt*.6;jet.scale.y=1+.18*Math.sin(now*.005);boat.position.y=Math.sin(now*.0016)*.08;boat.rotation.z=Math.sin(now*.0012)*.03;cars.forEach(q=>q.a+=q.v*dt)}
+cars.forEach((q,i)=>{du.position.set(q.r*Math.cos(q.a),.3,q.r*Math.sin(q.a));du.rotation.set(0,-q.a-(q.v>0?Math.PI/2:-Math.PI/2),0);du.scale.set(1,1,1);du.updateMatrix();cm.setMatrixAt(i,du.matrix)});cm.instanceMatrix.needsUpdate=true;if(cm.instanceColor)cm.instanceColor.needsUpdate=true;
+cam.position.set(T.x+45,40.5,T.z+45);cam.lookAt(T.x,0,T.z);cam.updateMatrixWorld();
+P.forEach((o,i)=>{pv3.set(o.p[0],o.y,o.p[1]).project(cam);const x=(pv3.x+1)/2*innerWidth,y=(1-pv3.y)/2*innerHeight;const b=LB[i],w=b.offsetWidth||170,hh=b.offsetHeight||65;const mobile=innerWidth<=720,ox=mobile?0:[245,225,135,74,76,90,190,175,230][i],oy=mobile?0:[105,55,55,63,141,55,55,100,55][i];const px=Math.max(w/2+8,Math.min(innerWidth-w/2-8,x+ox)),py=Math.max(hh+88,Math.min(innerHeight-12,y+oy));b.style.visibility=mobile&&(x<0||x>innerWidth||y<125||y>innerHeight)?'hidden':'';b.style.transform=`translate(${Math.round(px)}px,${Math.round(py)}px) translate(-50%,-100%)`;});
+rd.render(sc,cam);requestAnimationFrame(fr)}
+requestAnimationFrame(fr);
+})();
+</script></body></html>
