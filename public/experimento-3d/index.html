@@ -227,8 +227,8 @@ const ALL=[],cv=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,h
 tx=c=>{const t=new T3.CanvasTexture(c);t.encoding=T3.sRGBEncoding;t.anisotropy=4;return t},
 S=(c,r=.8)=>new T3.MeshStandardMaterial({color:c,roughness:r}),
 G=(c,g=1)=>{const m=new T3.MeshStandardMaterial({color:c,emissive:c,roughness:.5});m.userData={t:'g',g};ALL.push(m);return m},
-fac=(c,r,wall,win,lit,fn)=>{const a=cv(128,128),b=cv(128,128),x=a.getContext('2d'),y=b.getContext('2d');x.fillStyle=wall;x.fillRect(0,0,128,128);y.fillStyle='#000';y.fillRect(0,0,128,128);
-for(let i=0;i<c;i++)for(let j=0;j<r;j++){const p=(i+.18)*128/c,q=(j+.2)*128/r,w=.64*128/c,h=.6*128/r;x.fillStyle=win;x.fillRect(p,q,w,h);if(R()<.82){y.fillStyle=fn?fn(i,j):lit;y.fillRect(p,q,w,h)}}
+fac=(c,r,wall,win,lit,fn)=>{const a=cv(256,256),b=cv(256,256),x=a.getContext('2d'),y=b.getContext('2d');x.fillStyle=wall;x.fillRect(0,0,256,256);y.fillStyle='#000';y.fillRect(0,0,256,256);
+for(let i=0;i<c;i++)for(let j=0;j<r;j++){const p=(i+.18)*256/c,q=(j+.2)*256/r,w=.64*256/c,h=.6*256/r;x.fillStyle=win;x.fillRect(p,q,w,h);if(R()<.82){y.fillStyle=fn?fn(i,j):lit;y.fillRect(p,q,w,h)}}
 const m=new T3.MeshStandardMaterial({map:tx(a),emissive:0xffffff,emissiveMap:tx(b),roughness:.7,metalness:.1});m.userData={t:'w'};ALL.push(m);return m},
 sign=(t1,t2,w,h,bg,fg,f)=>{const a=cv(512,Math.round(512*h/w)),x=a.getContext('2d');x.fillStyle=bg;x.fillRect(0,0,a.width,a.height);x.fillStyle=fg;x.textAlign='center';x.textBaseline='middle';if(x.letterSpacing)x.letterSpacing=t2?'0px':'14px';
 x.font=`700 ${a.height*(t2?.34:.55)}px ${f}`;x.fillText(t1,256,a.height*(t2?.36:.5));if(t2){x.font=`600 ${a.height*.2}px system-ui,sans-serif`;x.fillText(t2,256,a.height*.76)}
@@ -295,10 +295,10 @@ const boat=new T3.Group();add(boat,new T3.BoxGeometry(1.8,.35,.6),S('#f4f0e6'),0
 // estado, câmera
 const T={x:0,z:0},z0=()=>Math.min(1.05,innerWidth/innerHeight*.9),kk=1/(.9/Math.hypot(1,.9,1));
 let k=0,kT=matchMedia('(prefers-color-scheme:light)').matches?0:1,lk=-1,sel=-1,hov=-1,tw=null,prev=null;k=kT;
-const E={bg:['#bcd6e8','#070b16'],hs:['#cfe6ff','#26335e'],hg:['#4a5a3c','#0a0e1a'],sc:['#fff0d6','#7e92d6'],gr:['#59616f','#10141f'],pk:['#6aa95e','#12301c'],wa:['#3a86b5','#0a2145']},
+const E={bg:['#bcd6e8','#070b16'],hs:['#dce6ef','#26335e'],hg:['#353d36','#0a0e1a'],sc:['#fff5e7','#7e92d6'],gr:['#59616f','#10141f'],pk:['#6aa95e','#12301c'],wa:['#3a86b5','#0a2145']},
 col=x=>new T3.Color(E[x][0]).lerp(new T3.Color(E[x][1]),k);
 function env(){sc.background=col('bg');sc.fog.color.copy(sc.background);hemi.color.copy(col('hs'));hemi.groundColor.copy(col('hg'));hemi.intensity=.56+.04*k;rd.toneMappingExposure=.86+.14*k;sc.fog.near=100-30*k;sc.fog.far=240-50*k;sun.color.copy(col('sc'));sun.intensity=1.38-.93*k;sun.position.set(30-50*k,45,-15+40*k);
-gm.color.copy(col('gr'));pm.color.copy(col('pk'));wm.color.copy(col('wa'));wm.emissive.set('#0a3a80').multiplyScalar(.8*k);document.body.dataset.m=kT?'n':'d';$('#bd').setAttribute('aria-pressed',!kT);$('#bn').setAttribute('aria-pressed',!!kT)}
+gm.color.copy(col('gr'));pm.color.copy(col('pk'));fm.color.setRGB(0.72+0.28*k,0.76+0.24*k,0.82+0.18*k);wm.color.copy(col('wa'));wm.emissive.set('#0a3a80').multiplyScalar(.8*k);document.body.dataset.m=kT?'n':'d';$('#bd').setAttribute('aria-pressed',!kT);$('#bn').setAttribute('aria-pressed',!!kT)}
 function rs(){const w=innerWidth,h=innerHeight,a=w/h;rd.setSize(w,h,false);cam.left=-H*a;cam.right=H*a;cam.top=H;cam.bottom=-H;cam.zoom=cam.zoom||z0();cam.updateProjectionMatrix()}
 cam.zoom=z0();addEventListener('resize',rs);rs();
 const go=(x,z,zm,ms=900)=>{tw={a:[T.x,T.z,cam.zoom],b:[x,z,zm],t:performance.now(),ms:RM?0:ms}},
