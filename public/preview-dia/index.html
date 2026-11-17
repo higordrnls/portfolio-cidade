@@ -312,14 +312,14 @@ const asphaltDay=daySurface('#b8b8b8',120),grassDay=daySurface('#a4ad91',16);
 let materialMode=null;
 function daylightMaterials(day){if(materialMode===day)return;materialMode=day;
  daylightMaps.forEach(({m,night,day:map})=>{m.map=day?map:night;m.needsUpdate=true;});
- fb.material=day?[fm,fm,daylightRoof,daylightRoof,fm,fm]:nightUrban;
- tc.material=day?dayTreeMaterial:nightTreeMaterial;gm.map=day?asphaltDay:null;pm.map=day?grassDay:null;gm.needsUpdate=pm.needsUpdate=true;tc.instanceColor.array.set(day?treeDay:treeNight);tc.instanceColor.needsUpdate=true;
+ fb.material=[fm,fm,daylightRoof,daylightRoof,fm,fm];
+ tc.material=dayTreeMaterial;gm.map=asphaltDay;pm.map=grassDay;gm.needsUpdate=pm.needsUpdate=true;tc.instanceColor.array.set(day?treeDay:treeNight);tc.instanceColor.needsUpdate=true;
 }
 const T={x:0,z:0},z0=()=>Math.min(1.05,innerWidth/innerHeight*.9),kk=1/(.9/Math.hypot(1,.9,1));
 let k=0,kT=matchMedia('(prefers-color-scheme:light)').matches?0:1,lk=-1,sel=-1,hov=-1,tw=null,prev=null;k=kT;
 const E={bg:['#a8bdca','#070b16'],hs:['#dce6ef','#26335e'],hg:['#353d36','#0a0e1a'],sc:['#fff5e7','#7e92d6'],gr:['#51565c','#10141f'],pk:['#52703b','#12301c'],wa:['#28586b','#0a2145']},
 col=x=>{const a=new T3.Color(E[x][0]);if(['gr','pk','wa'].includes(x))a.convertSRGBToLinear();return a.lerp(new T3.Color(E[x][1]),k);};
-function env(){daylightMaterials(kT===0);wt.position.x=wt.position.z=91.5+(63.64-91.5)*k;sc.background=col('bg');sc.fog.color.copy(sc.background);hemi.color.copy(col('hs'));hemi.groundColor.copy(col('hg'));hemi.intensity=.77-.17*k;rd.toneMappingExposure=.93+.07*k;sc.fog.near=100-30*k;sc.fog.far=240-50*k;sun.color.copy(col('sc'));sun.intensity=.96-.51*k;sun.position.set(24-44*k,60-15*k,-28+53*k);sun.shadow.radius=3-2*k;
+function env(){daylightMaterials(kT===0);wt.position.x=wt.position.z=91.5;sc.background=col('bg');sc.fog.color.copy(sc.background);hemi.color.copy(col('hs'));hemi.groundColor.copy(col('hg'));hemi.intensity=.77-.17*k;rd.toneMappingExposure=.93+.07*k;sc.fog.near=100-30*k;sc.fog.far=240-50*k;sun.color.copy(col('sc'));sun.intensity=.96-.51*k;sun.position.set(24-44*k,60-15*k,-28+53*k);sun.shadow.radius=3-2*k;
 gm.color.copy(col('gr'));pm.color.copy(col('pk'));fm.color.setRGB(0.72+0.28*k,0.76+0.24*k,0.82+0.18*k);wm.color.copy(col('wa'));wm.roughness=.48-.23*k;wm.metalness=.08+.22*k;wm.emissive.set('#0a3a80').multiplyScalar(.8*k);document.body.dataset.m=kT?'n':'d';$('#bd').setAttribute('aria-pressed',!kT);$('#bn').setAttribute('aria-pressed',!!kT)}
 function rs(){const w=innerWidth,h=innerHeight,a=w/h;rd.setSize(w,h,false);cam.left=-H*a;cam.right=H*a;cam.top=H;cam.bottom=-H;cam.zoom=cam.zoom||z0();cam.updateProjectionMatrix()}
 cam.zoom=z0();addEventListener('resize',rs);rs();
