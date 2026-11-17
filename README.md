@@ -1,65 +1,83 @@
 # Cidade-Portfólio — Higor Dornelas
 
-Portfólio interativo inspirado em uma maquete urbana isométrica. A cidade usa a imagem autoral `public/cidade-master.webp` como cenário principal e sobrepõe **nove marcadores clicáveis**, com descrições, status e links de cada projeto.
+**Uma cidade interativa em 3D onde arquitetura, tecnologia e criação se encontram.**
+
+Em vez de apresentar meus trabalhos em uma coleção de cartões, construí uma cidade navegável. Cada edifício representa um projeto, e os espaços em construção e lotes reservados representam ideias que ainda estão tomando forma.
+
+[**Explorar a cidade**](https://higordrnls.github.io/portfolio-cidade/) · [LinkedIn](https://www.linkedin.com/in/hdornelas)
 
 ## Experiência
 
-- **Dia e noite**: controles de iluminação visual.
-- **Exploração**: zoom, arraste e centralização da maquete.
-- **Projetos**: marcadores numerados de 01 a 09, painel com detalhes, links e navegação por teclado (setas e Esc).
-- **Responsividade**: interface adaptada para telas menores.
-- **Agadê**: marco central da cidade; **Lumear**: em construção; **Pastelaria PDV**: lote reservado.
+- Cena tridimensional em tempo real, com câmera ortográfica, edifícios, vegetação, vias e elementos animados.
+- Alternância entre dia e noite na mesma composição urbana, com iluminação, materiais e emissão de luz ajustados ao horário.
+- Exploração por arraste, zoom e retorno à visão geral.
+- Nove marcadores interativos: acesso à aplicação publicada quando disponível, ou ao GitHub; projetos planejados exibem informações.
+- Interface adaptada a desktop e dispositivos móveis, com marcadores compactos em telas menores.
+- Seções de apresentação pessoal, trajetória, habilidades, projetos e contato.
 
-> A alternância dia/noite aplica filtros sobre a mesma imagem-base. Não são duas renderizações independentes.
+## Projetos da cidade
 
-## Desenvolvimento
+| Nº | Projeto | Área | Acesso |
+|---|---|---|---|
+| 1 | Dashboard Vendas Power BI | Inteligência de negócios · Power BI / DAX | [GitHub](https://github.com/higordrnls/Dashboard-Vendas-PowerBI) |
+| 2 | Kanban Financeiro | Gestão financeira · JavaScript | [Acessar projeto](https://higordrnls.github.io/Kanban-Financeiro/) · [GitHub](https://github.com/higordrnls/Kanban-Financeiro) |
+| 3 | ArchDaily Pipeline Creator | Arquitetura encontra automação · Angular / Python | [Acessar projeto](https://arch-daily-pipeline-creator.vercel.app/) · [GitHub](https://github.com/higordrnls/ArchDaily-Pipeline-Creator) |
+| 4 | Retro Game Y2K | Experimento em jogos · Rust / Bevy / WASM | [Acessar projeto](https://higordrnls.github.io/retro-game-2000/) · [GitHub](https://github.com/higordrnls/retro-game-2000) |
+| 5 | Hevy AI Automator | Automação de treinos · TypeScript / Playwright | [GitHub](https://github.com/higordrnls/hevy-ai-automator) |
+| 6 | Distributed Wagering Processor | Engenharia backend · Bun / NestJS / PostgreSQL | [Acessar projeto](https://distributed-wagering-processor.pages.dev/) · [GitHub](https://github.com/higordrnls/distributed-wagering-processor) |
+| 7 | Agadê | Design autoral · Produto / Marca / Tecnologia | [Acessar projeto](https://agade.vercel.app/) · [GitHub](https://github.com/higordrnls/agade) |
+| 8 | Lumear | Arquitetura e construção · Em desenvolvimento | [GitHub](https://github.com/higordrnls/lumear) |
+| 9 | Pastelaria PDV | Varejo e memória afetiva · Projeto futuro | Planejado |
 
-Requer Node.js 22 ou superior.
+O edifício central é a Agadê. A Lumear ocupa um canteiro em construção e a Pastelaria PDV tem um lote reservado.
+
+## Arquitetura técnica
+
+A experiência principal utiliza **HTML, CSS, JavaScript e Three.js (r128)**, com WebGL para renderizar a cidade. A geometria é construída por código, não por sobreposição de uma imagem estática. Texturas geradas em canvas, materiais, luzes, sombras e malhas instanciadas compõem o cenário.
+
+O repositório mantém também a implementação anterior em React 19 e TypeScript. Vite organiza o desenvolvimento e o build; GitHub Actions publica os arquivos no GitHub Pages.
+
+| Caminho | Responsabilidade |
+|---|---|
+| `index.html` | Entrada do site e redirecionamento à cidade 3D |
+| `public/experimento-3d/index.html` | Experiência 3D oficial, interface e dados dos projetos |
+| `public/experimento-3d/perfil.png` | Retrato do autor |
+| `public/preview-dia/index.html` | Ambiente de experimentação visual |
+| `src/` | Implementação anterior em React e TypeScript |
+| `public/cidade-master.webp` | Cenário da implementação anterior |
+| `.github/workflows/deploy.yml` | Build e publicação automatizada |
+
+## Desenvolvimento local
+
+Requer Node.js 22, npm e um navegador com suporte a WebGL. A cena utiliza Three.js via CDN, portanto requer conexão para carregar essa dependência.
 
 ```bash
+git clone https://github.com/higordrnls/portfolio-cidade.git
+cd portfolio-cidade
 npm install
 npm run dev
+```
+
+Para gerar e visualizar o build:
+
+```bash
 npm run build
 npm run preview
 ```
 
-## Deploy
+## Publicação
 
-### GitHub Pages
+A branch `main` aciona o workflow de GitHub Actions, que gera `dist` e publica no GitHub Pages. O workflow também inclui a experiência experimental 2D da branch `feat/cidade-2d-interativa` em `/preview/`.
 
-O workflow `.github/workflows/deploy.yml` executa o build e publica `dist` quando a branch `main` recebe atualizações. O endereço é:
+- [Portfólio oficial](https://higordrnls.github.io/portfolio-cidade/)
+- [Prévia de materiais e iluminação](https://higordrnls.github.io/portfolio-cidade/preview-dia/)
 
-https://higordrnls.github.io/portfolio-cidade/
+## Contato
 
-O `vite.config.ts` usa `/portfolio-cidade/` como base fora da Vercel.
+- [LinkedIn](https://www.linkedin.com/in/hdornelas)
+- [GitHub](https://github.com/higordrnls)
+- [E-mail](mailto:higordrnls02@gmail.com)
 
-### Vercel
+---
 
-Importe o repositório `higordrnls/portfolio-cidade` em https://vercel.com/new e escolha a branch `main`.
-
-- Framework preset: **Vite**
-- Build command: `npm run build`
-- Output directory: `dist`
-- Install command: `npm install`
-- Root directory: `./`
-
-O projeto inclui `vercel.json` para configurar o build. Na Vercel, `vite.config.ts` usa base `/`. A publicação automática na Vercel depende da integração do repositório na sua conta.
-
-## Percurso
-
-1. Dashboard Vendas Power BI
-2. Kanban Financeiro
-3. ArchDaily Pipeline Creator
-4. Retro Game Y2K
-5. Hevy AI Automator
-6. Distributed Wagering Processor / Tigrinho de Mentirinha
-7. Agadê — edifício central
-8. Lumear — em construção
-9. Pastelaria PDV — lote reservado
-
-## Arquivos principais
-
-- `public/cidade-master.webp`: cenário renderizado aprovado
-- `src/main.tsx`: interface e interações
-- `src/projects.ts`: dados e links dos nove projetos
-- `src/style.css`: layout e estilos
+Uma cidade em constante construção, assim como minha trajetória.
