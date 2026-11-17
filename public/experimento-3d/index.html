@@ -305,7 +305,7 @@ const go=(x,z,zm,ms=900)=>{tw={a:[T.x,T.z,cam.zoom],b:[x,z,zm],t:performance.now
 clampT=()=>{const l=Math.hypot(T.x,T.z);if(l>26){T.x*=26/l;T.z*=26/l}},
 zb=f=>{cam.zoom=Math.min(3.2,Math.max(.5,cam.zoom*f));cam.updateProjectionMatrix()};
 // rótulos e painel
-const LB=P.map((o,i)=>{const b=document.createElement('button');b.className='lb';b.innerHTML=`<b>${i+1}</b><span>${o.n}<small>${o.s}</small></span>`;b.onclick=()=>open(i);b.onpointerenter=()=>hov=i;b.onpointerleave=()=>hov=-1;$('#lbs').append(b);return b});
+const LB=P.map((o,i)=>{const b=document.createElement('button');b.className='lb';b.innerHTML=`<b>${i+1}</b><span>${o.n}<small>${o.s}</small></span>`;b.onclick=()=>{const link=o.l.find(([label])=>/acessar|site|demo/i.test(label))||o.l.find(([label,url])=>!url.includes('github.com/'))||o.l[0];if(link)window.open(link[1],'_blank','noopener,noreferrer');else open(i);};b.onpointerenter=()=>hov=i;b.onpointerleave=()=>hov=-1;$('#lbs').append(b);return b});
 function open(i){if(sel<0)prev={x:T.x,z:T.z,k:cam.zoom};sel=i;const o=P[i];$('#k').textContent=`Projeto ${i+1} de 9 · ${o.s}`;$('#h').textContent=o.n;$('#d').textContent=o.d;
 $('#ch').innerHTML=o.t.map(t=>`<span>${t}</span>`).join('');$('#ln').innerHTML=o.l.length?o.l.map(([a,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${a}</a>`).join(''):'<small>Projeto em planejamento.</small>';
 $('#pn').hidden=false;$('#hero').hidden=true;LB.forEach((b,j)=>b.classList.toggle('on',j===i));
